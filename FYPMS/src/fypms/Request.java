@@ -12,22 +12,29 @@ public class Request {
 		REJECTED,
 		PENDING,
 	}
+	//Who is sending the request
+	private Student sSender;
+	private Supervisor ssSender;
 	
-	private Student s;
-	private Supervisor ss;
-	private Supervisor replacementSS;
-	private Coordinator c;
-	private Project p;
+	//Who is receiving the request
+	private Supervisor ssReceiver;
+	private Coordinator cReceiver;
+	
+	//General information for request
 	private int requestID;
 	private requestType type;
 	private requestStatus status;
+	
+	//Specific request type information
+	private Supervisor replacementSS;
+	private Project p;
 	private String projectTitle;
 	
 	//Change Title
 	public Request(int requestID, Student s, Supervisor ss, requestType type, String projectTitle) {
 		this.requestID = requestID;
-		this.s = s;
-		this.ss = ss;
+		sSender = s;
+		ssReceiver = ss;
 		this.type = type;
 		this.projectTitle = projectTitle;
 		status = requestStatus.PENDING;
@@ -36,8 +43,8 @@ public class Request {
 	//Register or Deregister
 	public Request(int requestID, Student s, Coordinator c, requestType type, Project p) {
 		this.requestID = requestID;
-		this.s = s;
-		this.c = c;
+		sSender = s;
+		cReceiver = c;
 		this.type = type;
 		this.p = p;
 		status = requestStatus.PENDING;
@@ -46,8 +53,8 @@ public class Request {
 	//Change Student
 	public Request(int requestID, Supervisor ss, Coordinator c, requestType type, Supervisor replacementSS) {
 		this.requestID = requestID;
-		this.ss = ss;
-		this.c = c;
+		ssSender = ss;
+		cReceiver = c;
 		this.type = type;
 		this.replacementSS = replacementSS;
 		status = requestStatus.PENDING;
