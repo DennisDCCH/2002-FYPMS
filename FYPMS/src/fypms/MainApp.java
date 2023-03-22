@@ -8,7 +8,7 @@ public class MainApp {
 		StudentList stu = new StudentList();
 		SupervisorList sup = new SupervisorList();
 		CoordinatorList coord = new CoordinatorList();
-		ProjectList projectList = new ProjectList();
+		ProjectList projectList = new ProjectList(sup);
 		RequestList requestList = new RequestList();
 		
 		int choice = 0;
