@@ -66,6 +66,19 @@ public class ProjectList {
 	}
 	
 	//Printing Methods
+	public void printProject() {
+		for(Project p: projectList) {
+			System.out.println("Project ID:" + p.getProjectID());
+			System.out.println("Project Title: " + p.getProjectTitle());
+			System.out.println("Supervisor: " + p.getSs().getUserName());
+			System.out.println("Email: " + p.getSs().email() + "\n");
+			if(p.getS() != null) {
+				System.out.println("Student: " + p.getS().getUserName());
+				System.out.println("Email: " + p.getS().email());
+			}
+			System.out.println("Status: " + p.getStatus());
+		}
+	}
 	public void printStatusProject(Status s) {
 		for(Project p: projectList) {
 			if(p.getStatus() == s) {

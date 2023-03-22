@@ -84,6 +84,7 @@ public class CoordinatorApp {
 			option = sc.nextInt();
 			switch(option) {
 			case 1:
+				projectList.printProject();
 				break;
 				
 			case 2:
