@@ -29,11 +29,9 @@ public class SupervisorList {
 	
 	//Setter Getter
 	public Supervisor getSupervisor(int index) {
-		int i = 1;
 		for(Supervisor s: supervisor) {
-			if(i == index)
+			if(s.getSupervisorIndex() == index)
 				return s;
-			i++;
 		}
 		return null;
 	}
