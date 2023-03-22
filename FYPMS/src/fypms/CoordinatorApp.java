@@ -200,12 +200,12 @@ public class CoordinatorApp {
 					break;
 					
 				case 12:
-					System.out.println("Returning...");
+					System.out.println("Returning...\n");
 					System.out.println();
 					break;
 					
 				default:
-					System.out.println("Please choose a valid option");
+					System.out.println("Please choose a valid option\n");
 					System.out.println();
 					break;
 			}
