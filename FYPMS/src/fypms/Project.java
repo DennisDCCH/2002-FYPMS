@@ -45,4 +45,8 @@ public class Project {
 	public Supervisor getSs() {
 		return ss;
 	}
+
+	public void setProjectTitle(String projectTitle) {
+		this.projectTitle = projectTitle;
+	}
 }

@@ -87,6 +87,20 @@ public class ProjectList {
 		}
 	}
 	
+	public void printSupervisorProject(Supervisor ss) {
+		for(Project p: projectList) {
+			if(p.getSs() == ss) {
+				System.out.println("Project ID:" + p.getProjectID());
+				System.out.println("Project Title: " + p.getProjectTitle());
+				if(p.getS() != null) {
+					System.out.println("Student: " + p.getS().getUserName());
+					System.out.println("Email: " + p.getS().email());
+				}
+				System.out.println();
+			}
+		}
+	}
+	
 	//Setter Getter
 	public Project getProject(int index) {
 		for(Project p: projectList) {

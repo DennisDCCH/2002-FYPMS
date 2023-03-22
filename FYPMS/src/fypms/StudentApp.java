@@ -89,12 +89,10 @@ public class StudentApp {
 					
 				case 8: //Logout
 					System.out.println("Logging out...\n");
-					System.out.println();
 					break;
 					
 				default:
 					System.out.println("Please choose a valid option\n");
-					System.out.println();
 					break;
 				
 			}

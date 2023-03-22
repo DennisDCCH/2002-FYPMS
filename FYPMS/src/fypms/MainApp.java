@@ -67,7 +67,7 @@ public class MainApp {
 					if(ss.checkPassword(password)) {
 						System.out.println("Login successfully!");
 						SupervisorApp ssapp = new SupervisorApp(ss, projectList, requestList);
-						ssapp.supervisorInterface(ss.isPendingRequest());
+						ssapp.supervisorInterface();
 						break;
 					}
 					else {
