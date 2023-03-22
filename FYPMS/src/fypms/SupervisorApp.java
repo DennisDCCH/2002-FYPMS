@@ -6,10 +6,12 @@ public class SupervisorApp {
 	Scanner sc = new Scanner(System.in);
 	private Supervisor sup;
 	private ProjectList projectList;
+	private RequestList requestList;
 	
-	public SupervisorApp(Supervisor ss, ProjectList projectList) {
+	public SupervisorApp(Supervisor ss, ProjectList projectList, RequestList requestList) {
 		this.sup = ss;
 		this.projectList = projectList;
+		this.requestList = requestList;
 	}
 	
 	public void supervisorInterface(boolean pendingRequest) {

@@ -8,7 +8,7 @@ public class Coordinator extends User{
 	}
 	
 	public String email() {
-		return userID + "@ntu.edu.sg";
+		return super.getUserID() + "@ntu.edu.sg";
 	}
 
 	public boolean isPendingRequest() {

@@ -30,7 +30,7 @@ public class Request {
 	private Project p;
 	private String projectTitle;
 	
-	//Change Title
+	//Change Title Request
 	public Request(int requestID, Student s, Supervisor ss, requestType type, String projectTitle) {
 		this.requestID = requestID;
 		sSender = s;
@@ -40,7 +40,7 @@ public class Request {
 		status = requestStatus.PENDING;
 	}
 	
-	//Register or Deregister
+	//Register or Deregister Request
 	public Request(int requestID, Student s, Coordinator c, requestType type, Project p) {
 		this.requestID = requestID;
 		sSender = s;
@@ -50,7 +50,7 @@ public class Request {
 		status = requestStatus.PENDING;
 	}
 	
-	//Change Student
+	//Change Student Request
 	public Request(int requestID, Supervisor ss, Coordinator c, requestType type, Supervisor replacementSS) {
 		this.requestID = requestID;
 		ssSender = ss;
@@ -59,4 +59,50 @@ public class Request {
 		this.replacementSS = replacementSS;
 		status = requestStatus.PENDING;
 	}
+	
+	//Setter Getter
+	public Student getsSender() {
+		return sSender;
+	}
+
+	public Supervisor getSsSender() {
+		return ssSender;
+	}
+
+	public Supervisor getSsReceiver() {
+		return ssReceiver;
+	}
+
+	public Coordinator getcReceiver() {
+		return cReceiver;
+	}
+	
+	public Supervisor getReplacementSS() {
+		return replacementSS;
+	}
+
+	public Project getP() {
+		return p;
+	}
+
+	public requestStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(requestStatus status) {
+		this.status = status;
+	}
+
+	public requestType getType() {
+		return type;
+	}
+
+	public int getRequestID() {
+		return requestID;
+	}
+
+	public String getProjectTitle() {
+		return projectTitle;
+	}
+		
 }

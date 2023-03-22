@@ -1,9 +1,9 @@
 package fypms;
 
 public abstract class  User {
-	protected String userName;
-	protected String userID;
-	protected String password;
+	private String userName;
+	private String userID;
+	private String password;
 	
 	public User(String userID, String userName) {
 		this.userID = userID;

@@ -16,7 +16,7 @@ public class Supervisor extends User{
 	}
 	
 	public String email() {
-		return userID + "@ntu.edu.sg";
+		return super.getUserID() + "@ntu.edu.sg";
 	}
 
 	public boolean isPendingRequest() {

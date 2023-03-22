@@ -9,6 +9,7 @@ public class MainApp {
 		SupervisorList sup = new SupervisorList();
 		CoordinatorList coord = new CoordinatorList();
 		ProjectList projectList = new ProjectList();
+		RequestList requestList = new RequestList();
 		
 		int choice = 0;
 		
@@ -52,7 +53,7 @@ public class MainApp {
 				if(s != null) {
 					if(s.checkPassword(password)) {
 						System.out.println("Login successfully!");
-						StudentApp sapp = new StudentApp(s, projectList);
+						StudentApp sapp = new StudentApp(s, projectList, requestList, coord.getC());
 						sapp.studentInterface();
 						break;
 					}
@@ -65,7 +66,7 @@ public class MainApp {
 				else if (ss != null) {
 					if(ss.checkPassword(password)) {
 						System.out.println("Login successfully!");
-						SupervisorApp ssapp = new SupervisorApp(ss, projectList);
+						SupervisorApp ssapp = new SupervisorApp(ss, projectList, requestList);
 						ssapp.supervisorInterface(ss.isPendingRequest());
 						break;
 					}

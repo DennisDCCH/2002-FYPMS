@@ -12,4 +12,8 @@ public class CoordinatorList {
 			return c;
 		return null;
 	}
+
+	public Coordinator getC() {
+		return c;
+	}
 }

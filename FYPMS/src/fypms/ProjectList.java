@@ -54,6 +54,15 @@ public class ProjectList {
 		projectList.add(p);
 	}
 	
+	//Checking for student if have project
+	public boolean checkStudentProject(Student s) {
+		for(Project p: projectList) {
+			if(p.getS() == s)
+				return true;
+		}
+		return false;
+	}
+	
 	//Printing Methods
 	public void printStatusProject(Status s) {
 		for(Project p: projectList) {
@@ -61,8 +70,19 @@ public class ProjectList {
 				System.out.println("Project ID:" + p.getProjectID());
 				System.out.println("Project Title: " + p.getProjectTitle());
 				System.out.println("Supervisor: " + p.getSs().getUserName());
-				System.out.println("Email: " + p.getSs().email());
-				System.out.println();
+				System.out.println("Email: " + p.getSs().email() + "\n");
+			}
+		}
+	}
+	
+	public void printStudentProject(Student s) {
+		for(Project p: projectList) {
+			if(p.getS() == s) {
+				System.out.println("Project ID:" + p.getProjectID());
+				System.out.println("Project Title: " + p.getProjectTitle());
+				System.out.println("Supervisor: " + p.getSs().getUserName());
+				System.out.println("Email: " + p.getSs().email() + "\n");
+				return;
 			}
 		}
 	}
@@ -71,6 +91,14 @@ public class ProjectList {
 	public Project getProject(int index) {
 		for(Project p: projectList) {
 			if(p.getProjectID() == index)
+				return p;
+		}
+		return null;
+	}
+	
+	public Project getStudentProject(Student s) {
+		for(Project p: projectList) {
+			if(p.getS() == s)
 				return p;
 		}
 		return null;
