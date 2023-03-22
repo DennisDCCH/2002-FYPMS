@@ -14,10 +14,10 @@ public class SupervisorApp {
 		this.requestList = requestList;
 	}
 	
-	public void supervisorInterface() {
+	public void supervisorDisplay() {
 		int option = 0;
 		do {
-			printMainInterface();
+			mainDisplay();
 			option = sc.nextInt();
 			switch(option) {
 				case 1:
@@ -28,11 +28,11 @@ public class SupervisorApp {
 					break;
 						
 				case 2:
-					supervisorProjectInterface();
+					supervisorProjectDisplay();
 					break;
 						
 				case 3:
-					supervisorRequestInterface();
+					supervisorRequestDisplay();
 					break;
 						
 				case 4:
@@ -50,7 +50,7 @@ public class SupervisorApp {
 		}while(option != 5);
 	}
 	
-	private void printMainInterface() {
+	private void mainDisplay() {
 		if(requestList.checkSupervisorPendingRequest(sup)) {
 			System.out.println("========================================");
 			System.out.println("|1. Change Password                    |");
@@ -73,7 +73,7 @@ public class SupervisorApp {
 		}
 	}
 	
-	private void supervisorProjectInterface() {
+	private void supervisorProjectDisplay() {
 		int option = 0;
 		do {
 			System.out.println("========================================");
@@ -117,7 +117,7 @@ public class SupervisorApp {
 			
 	}
 	
-	private void supervisorRequestInterface() {
+	private void supervisorRequestDisplay() {
 		int option = 0;
 		do {
 			System.out.println("========================================");

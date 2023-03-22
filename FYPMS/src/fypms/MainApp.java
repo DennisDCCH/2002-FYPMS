@@ -54,7 +54,7 @@ public class MainApp {
 					if(s.checkPassword(password)) {
 						System.out.println("Login successfully!");
 						StudentApp sapp = new StudentApp(s, projectList, requestList, coord.getC());
-						sapp.studentInterface();
+						sapp.studentDisplay();
 						break;
 					}
 					else {
@@ -67,7 +67,7 @@ public class MainApp {
 					if(ss.checkPassword(password)) {
 						System.out.println("Login successfully!");
 						SupervisorApp ssapp = new SupervisorApp(ss, projectList, requestList);
-						ssapp.supervisorInterface();
+						ssapp.supervisorDisplay();
 						break;
 					}
 					else {
@@ -80,7 +80,7 @@ public class MainApp {
 					if(c.checkPassword(password)) {
 						System.out.println("Login successfully!");
 						CoordinatorApp capp = new CoordinatorApp(c, projectList, requestList, sup);
-						capp.coordinatorInterface();
+						capp.coordinatorDisplay();
 						break;
 					}
 					else {

@@ -17,7 +17,7 @@ public class StudentApp {
 		this.c = c;
 	}
 	
-	public void studentInterface() {
+	public void studentDisplay() {
 		int option = 0, id = 0;
 		do {
 			System.out.println("========================================");

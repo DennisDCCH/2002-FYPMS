@@ -18,10 +18,10 @@ public class CoordinatorApp {
 		this.supervisorList = supervisorList;
 	}
 	
-	public void coordinatorInterface() {
+	public void coordinatorDisplay() {
 		int option = 0;
 		do {
-			mainInterface();
+			mainDisplay();
 			option = sc.nextInt();
 			switch(option) {
 				case 1:
@@ -32,11 +32,11 @@ public class CoordinatorApp {
 					break;
 					
 				case 2:
-					coordinatorProjectInterface();
+					coordinatorProjectDisplay();
 					break;
 					
 				case 3:
-					coordinatorRequestInterface();
+					coordinatorRequestDisplay();
 					break;
 					
 				case 4:
@@ -50,7 +50,7 @@ public class CoordinatorApp {
 		}while(option != 4);
 	}
 	
-	private void mainInterface() {
+	private void mainDisplay() {
 		if(requestList.checkCoordinatorPendingRequest(c)) {
 			System.out.println("========================================");
 			System.out.println("|1. Change Password                    |");
@@ -71,7 +71,7 @@ public class CoordinatorApp {
 		}
 	}
 	
-	private void coordinatorProjectInterface() {
+	private void coordinatorProjectDisplay() {
 		int option = 0;
 		do {
 			System.out.println("========================================");
@@ -88,11 +88,11 @@ public class CoordinatorApp {
 				break;
 				
 			case 2:
-				projectStatusInterface();
+				projectStatusDisplay();
 				break;
 				
 			case 3:
-				projectSupervisorInterface();
+				projectSupervisorDisplay();
 				break;
 				
 			case 4:
@@ -106,7 +106,7 @@ public class CoordinatorApp {
 		}while(option != 4);
 	}
 	
-	private void coordinatorRequestInterface(){
+	private void coordinatorRequestDisplay(){
 		int option = 0;
 		do {
 			System.out.println("========================================");
@@ -136,7 +136,7 @@ public class CoordinatorApp {
 		}while(option != 3);
 	}
 	
-	private void projectStatusInterface() {
+	private void projectStatusDisplay() {
 		int choice = 0;
 		do {
 			System.out.println("===================");
@@ -176,7 +176,7 @@ public class CoordinatorApp {
 		}while(choice != 5);
 	}
 	
-	private void projectSupervisorInterface() {
+	private void projectSupervisorDisplay() {
 		int choice = 0;
 		do {
 			System.out.println("==============================");
