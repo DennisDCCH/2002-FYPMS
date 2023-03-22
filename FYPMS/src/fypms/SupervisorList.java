@@ -29,7 +29,7 @@ public class SupervisorList {
 	
 	//Setter Getter
 	public Supervisor getSupervisor(int index) {
-		int i = 0;
+		int i = 1;
 		for(Supervisor s: supervisor) {
 			if(i == index)
 				return s;
