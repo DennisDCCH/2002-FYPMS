@@ -1,7 +1,6 @@
 package fypms;
 
 public class Coordinator extends User{
-	private boolean pendingRequest;
 	
 	public Coordinator(String coordinatorID, String coordinatorEmail) {
 		super(coordinatorID, coordinatorEmail);
@@ -9,14 +8,6 @@ public class Coordinator extends User{
 	
 	public String email() {
 		return super.getUserID() + "@ntu.edu.sg";
-	}
-
-	public boolean isPendingRequest() {
-		return pendingRequest;
-	}
-
-	public void setPendingRequest(boolean pendingRequest) {
-		this.pendingRequest = pendingRequest;
 	}
 }
 
