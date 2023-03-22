@@ -7,6 +7,7 @@ public class StudentApp {
 	Scanner sc = new Scanner(System.in);
 	private Student stu;
 	private ProjectList projectList;
+	private RequestList requestList;
 	
 	public StudentApp(Student stu, ProjectList projectList) {
 		this.stu = stu;
@@ -55,6 +56,8 @@ public class StudentApp {
 					break;
 					
 				case 8:
+					System.out.println("Logging out...");
+					System.out.println();
 					break;
 					
 				default:
