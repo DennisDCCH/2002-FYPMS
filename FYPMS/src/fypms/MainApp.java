@@ -79,6 +79,8 @@ public class MainApp {
 				else if(c != null) {
 					if(c.checkPassword(password)) {
 						System.out.println("Login successfully!");
+						CoordinatorApp capp = new CoordinatorApp(c, projectList, requestList, sup);
+						capp.coordinatorInterface();
 						break;
 					}
 					else {
