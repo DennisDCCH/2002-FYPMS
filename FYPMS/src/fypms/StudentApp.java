@@ -63,6 +63,7 @@ public class StudentApp {
 						System.out.println("Enter the project ID that you want to register to: ");
 						id = sc.nextInt();
 						requestList.addRegisterFYPRequest(stu, c, projectList.getProject(id));
+						projectList.getProject(id).setStatus(Status.RESERVED);
 						System.out.println("Your request have been sent.\n");
 					}
 					break;

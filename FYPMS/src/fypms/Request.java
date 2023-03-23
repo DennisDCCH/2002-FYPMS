@@ -51,12 +51,13 @@ public class Request {
 	}
 	
 	//Change Student Request
-	public Request(int requestID, Supervisor ss, Coordinator c, requestType type, Supervisor replacementSS) {
+	public Request(int requestID, Supervisor ss, Coordinator c, requestType type, Supervisor replacementSS, Project p) {
 		this.requestID = requestID;
 		ssSender = ss;
 		cReceiver = c;
 		this.type = type;
 		this.replacementSS = replacementSS;
+		this.p = p;
 		status = requestStatus.PENDING;
 	}
 	

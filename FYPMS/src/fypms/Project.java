@@ -9,7 +9,6 @@ public class Project {
 		RESERVED,
 		UNAVAILABLE,
 		ALLOCATED,
-		NULL,
 	}
 	private Student s;
 	private Supervisor ss;
@@ -48,5 +47,17 @@ public class Project {
 
 	public void setProjectTitle(String projectTitle) {
 		this.projectTitle = projectTitle;
+	}
+
+	public void setS(Student s) {
+		this.s = s;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public void setSs(Supervisor ss) {
+		this.ss = ss;
 	}
 }

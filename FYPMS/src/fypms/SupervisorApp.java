@@ -9,15 +9,15 @@ public class SupervisorApp {
 	private ProjectList projectList;
 	private RequestList requestList;
 
-	private CoordinatorList coordinatorList;
+	private Coordinator coord;
 
 	private SupervisorList supervisorList;
-	public SupervisorApp(Supervisor ss, ProjectList projectList, RequestList requestList, SupervisorList supervisorList, CoordinatorList coordinatorList) {
+	public SupervisorApp(Supervisor ss, ProjectList projectList, RequestList requestList, SupervisorList supervisorList, Coordinator coord) {
 		this.sup = ss;
 		this.projectList = projectList;
 		this.requestList = requestList;
 		this.supervisorList = supervisorList;
-		this.coordinatorList = coordinatorList;
+		this.coord = coord;
 	}
 	
 	public void supervisorDisplay() {
@@ -42,23 +42,28 @@ public class SupervisorApp {
 					break;
 						
 				case 4:
+					projectList.printSupervisorProject(sup);
+					
 					//get project id
-					System.out.println("Enter Project ID: ");
+					System.out.println("Enter Project ID to transfer: ");
 					int projId = sc.nextInt();
+					
+					while(true){
+						//get Replacement supervisor ID
+						System.out.println("Enter Replacement Supervisor ID: ");
+						String repSupId = sc.next();
 
-					//get Replacement supervisor ID
-					System.out.println("Enter Replacement Supervisor ID: ");
-					String repSupId = sc.next();
-
-					// if supervisor has less than 2 project ongoing send the request
-					if(this.supervisorList.checkIfSupervisorExist(repSupId) != null){
-						if(this.supervisorList.checkIfSupervisorExist(repSupId).getProjectOngoing() < 2){
-							this.requestList.addChangeStudentRequest(this.sup, this.coordinatorList.getC(), this.supervisorList.checkIfSupervisorExist(repSupId));
-						} else if (this.supervisorList.checkIfSupervisorExist(repSupId).getProjectOngoing() >= 2) {
-							System.out.println("Replacement Supervisor already had more than 2 projects ongoing. Choose another supervisor!!");
+						// if supervisor has less than 2 project ongoing send the request
+						if(supervisorList.checkIfSupervisorExist(repSupId) != null){
+							if(supervisorList.checkIfSupervisorExist(repSupId).getProjectOngoing() < 2) {
+								requestList.addChangeStudentRequest(sup, coord, supervisorList.checkIfSupervisorExist(repSupId), projectList.getProject(option));
+								break;
+							}
+							else
+								System.out.println("Replacement Supervisor already have 2 projects ongoing. Choose another supervisor!!");
 						}
-
-						System.out.println("Supervisor does not exist");
+						else
+							System.out.println("Supervisor does not exist");
 					}
 					break;
 						
@@ -153,7 +158,17 @@ public class SupervisorApp {
 			option = sc.nextInt();
 			switch(option) {
 				case 1:
-					//not done!
+					if(requestList.checkSupervisorPendingRequest(sup)) {
+						System.out.println("List of Pending Request");
+						requestList.printSupervisorReceiveRequest(sup);
+						
+						System.out.println("Enter the requestID for further review");
+						int id = sc.nextInt();
+						
+						RequestProcessing rp = new RequestProcessing(requestList.getRequest(id), projectList);
+					}
+					else
+						System.out.println("You have no pending requests!\n");
 					break;
 					
 				case 2:

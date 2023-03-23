@@ -35,11 +35,19 @@ public class RequestList {
 		requestList.add(r);
 	}
 	
-	public void addChangeStudentRequest(Supervisor ss, Coordinator c, Supervisor replacementSS) {
-		Request r = new Request(requestID, ss, c, requestType.TRANSFER_STUDENT, replacementSS);
+	public void addChangeStudentRequest(Supervisor ss, Coordinator c, Supervisor replacementSS, Project p) {
+		Request r = new Request(requestID, ss, c, requestType.TRANSFER_STUDENT, replacementSS, p);
 		requestID++;
 		
 		requestList.add(r);
+	}
+	
+	public Request getRequest(int index) {
+		for(Request r: requestList) {
+			if(r.getRequestID() == index)
+				return r;
+		}
+		return null;
 	}
 	
 	//Checking for pending request
