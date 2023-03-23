@@ -44,7 +44,7 @@ public class StudentApp {
 					if(projectList.checkStudentProject(stu)) 
 						projectList.printStudentProject(stu);
 					else
-						System.out.println("You have not registered a project!\n");
+						System.out.println("You have not registered for a project!\n");
 					break;
 					
 				case 3: //View Available Project
