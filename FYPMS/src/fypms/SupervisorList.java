@@ -35,4 +35,14 @@ public class SupervisorList {
 		}
 		return null;
 	}
+
+	public Supervisor checkIfSupervisorExist(String sup_name){
+		for( Supervisor s: supervisor){
+			if(s.getUserID().equals(sup_name)){
+				return s;
+			}
+		}
+		return null;
+	}
+
 }

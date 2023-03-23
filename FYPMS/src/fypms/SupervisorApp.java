@@ -1,5 +1,6 @@
 package fypms;
 
+import java.util.Collections;
 import java.util.Scanner;
 
 public class SupervisorApp {
@@ -7,11 +8,16 @@ public class SupervisorApp {
 	private Supervisor sup;
 	private ProjectList projectList;
 	private RequestList requestList;
-	
-	public SupervisorApp(Supervisor ss, ProjectList projectList, RequestList requestList) {
+
+	private CoordinatorList coordinatorList;
+
+	private SupervisorList supervisorList;
+	public SupervisorApp(Supervisor ss, ProjectList projectList, RequestList requestList, SupervisorList supervisorList, CoordinatorList coordinatorList) {
 		this.sup = ss;
 		this.projectList = projectList;
 		this.requestList = requestList;
+		this.supervisorList = supervisorList;
+		this.coordinatorList = coordinatorList;
 	}
 	
 	public void supervisorDisplay() {
@@ -36,7 +42,24 @@ public class SupervisorApp {
 					break;
 						
 				case 4:
-					//not done
+					//get project id
+					System.out.println("Enter Project ID: ");
+					int projId = sc.nextInt();
+
+					//get Replacement supervisor ID
+					System.out.println("Enter Replacement Supervisor ID: ");
+					String repSupId = sc.next();
+
+					// if supervisor has less than 2 project ongoing send the request
+					if(this.supervisorList.checkIfSupervisorExist(repSupId) != null){
+						if(this.supervisorList.checkIfSupervisorExist(repSupId).getProjectOngoing() < 2){
+							this.requestList.addChangeStudentRequest(this.sup, this.coordinatorList.getC(), this.supervisorList.checkIfSupervisorExist(repSupId));
+						} else if (this.supervisorList.checkIfSupervisorExist(repSupId).getProjectOngoing() >= 2) {
+							System.out.println("Replacement Supervisor already had more than 2 projects ongoing. Choose another supervisor!!");
+						}
+
+						System.out.println("Supervisor does not exist");
+					}
 					break;
 						
 				case 5:
