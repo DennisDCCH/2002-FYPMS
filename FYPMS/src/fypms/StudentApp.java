@@ -72,7 +72,7 @@ public class StudentApp {
 					if(projectList.checkStudentProject(stu)) {
 						System.out.println("Enter your new Project Title: ");
 						String title = sc.next();
-						requestList.addChangeTitleRequest(stu, projectList.getStudentProject(stu).getSs(), title);
+						requestList.addChangeTitleRequest(stu, projectList.getStudentProject(stu).getSs(), title, projectList.getStudentProject(stu));
 						System.out.println("Your request have been sent.\n");
 					}
 					else 

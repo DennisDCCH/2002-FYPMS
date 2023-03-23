@@ -34,12 +34,12 @@ public class ProjectList {
 			System.out.println("Project ID:" + p.getProjectID());
 			System.out.println("Project Title: " + p.getProjectTitle());
 			System.out.println("Supervisor: " + p.getSs().getUserName());
-			System.out.println("Email: " + p.getSs().email() + "\n");
+			System.out.println("Email: " + p.getSs().email());
 			if(p.getS() != null) {
 				System.out.println("Student: " + p.getS().getUserName());
 				System.out.println("Email: " + p.getS().email());
 			}
-			System.out.println("Status: " + p.getStatus());
+			System.out.println("Status: " + p.getStatus() + "\n");
 		}
 	}
 	public void printStatusProject(Status s) {
@@ -48,7 +48,12 @@ public class ProjectList {
 				System.out.println("Project ID:" + p.getProjectID());
 				System.out.println("Project Title: " + p.getProjectTitle());
 				System.out.println("Supervisor: " + p.getSs().getUserName());
-				System.out.println("Email: " + p.getSs().email() + "\n");
+				System.out.println("Email: " + p.getSs().email());
+				if(p.getS() != null) {
+					System.out.println("Student: " + p.getS().getUserName());
+					System.out.println("Email: " + p.getS().email());
+				}
+				System.out.println();
 			}
 		}
 	}
@@ -71,6 +76,20 @@ public class ProjectList {
 				System.out.println("Project ID:" + p.getProjectID());
 				System.out.println("Project Title: " + p.getProjectTitle());
 				if(p.getS() != null) {
+					System.out.println("Student: " + p.getS().getUserName());
+					System.out.println("Email: " + p.getS().email());
+				}
+				System.out.println();
+			}
+		}
+	}
+	
+	public void printSupervisorAllocatedProject(Supervisor ss) {
+		for(Project p: projectList) {
+			if(p.getSs() == ss) {
+				if(p.getStatus() == Status.ALLOCATED) {
+					System.out.println("Project ID:" + p.getProjectID());
+					System.out.println("Project Title: " + p.getProjectTitle());
 					System.out.println("Student: " + p.getS().getUserName());
 					System.out.println("Email: " + p.getS().email());
 				}

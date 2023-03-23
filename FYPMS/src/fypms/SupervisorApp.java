@@ -42,7 +42,7 @@ public class SupervisorApp {
 					break;
 						
 				case 4:
-					projectList.printSupervisorProject(sup);
+					projectList.printSupervisorAllocatedProject(sup);
 					
 					//get project id
 					System.out.println("Enter Project ID to transfer: ");
@@ -56,7 +56,7 @@ public class SupervisorApp {
 						// if supervisor has less than 2 project ongoing send the request
 						if(supervisorList.checkIfSupervisorExist(repSupId) != null){
 							if(supervisorList.checkIfSupervisorExist(repSupId).getProjectOngoing() < 2) {
-								requestList.addChangeStudentRequest(sup, coord, supervisorList.checkIfSupervisorExist(repSupId), projectList.getProject(option));
+								requestList.addChangeStudentRequest(sup, coord, supervisorList.checkIfSupervisorExist(repSupId), projectList.getProject(projId));
 								break;
 							}
 							else
@@ -117,6 +117,7 @@ public class SupervisorApp {
 					System.out.println("Enter Project Title: ");
 					String projectTitle = sc.next();
 					projectList.addProject(sup, projectTitle);
+					System.out.println("Project created!\n");
 					break;
 					
 				case 2:
@@ -160,7 +161,7 @@ public class SupervisorApp {
 				case 1:
 					if(requestList.checkSupervisorPendingRequest(sup)) {
 						System.out.println("List of Pending Request");
-						requestList.printSupervisorReceiveRequest(sup);
+						requestList.printSupervisorPendingRequest(sup);
 						
 						System.out.println("Enter the requestID for further review");
 						int id = sc.nextInt();

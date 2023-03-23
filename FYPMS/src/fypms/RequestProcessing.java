@@ -34,9 +34,9 @@ public class RequestProcessing {
 					if(r.getType() == requestType.CHANGE_TITLE) 
 						r.getP().setProjectTitle(r.getProjectTitle());
 					else  if(r.getType() == requestType.DEREGISTER_FYP) 
-						registerFYP();
-					else if(r.getType() == requestType.REGISTER_FYP) 
 						deregisterFYP();
+					else if(r.getType() == requestType.REGISTER_FYP) 
+						registerFYP();
 					else if(r.getType() == requestType.TRANSFER_STUDENT) 
 						changeStudent();
 					break;
@@ -56,8 +56,9 @@ public class RequestProcessing {
 	}
 	
 	private void registerFYP() {
-		//Set student
+		
 		if(r.getP().getStatus() == Status.RESERVED) {
+			//Set student
 			r.getP().setS(r.getsSender());
 			
 			//Set project status

@@ -118,7 +118,17 @@ public class CoordinatorApp {
 			option = sc.nextInt();
 			switch(option) {
 				case 1:
-					//not done!
+					if(requestList.checkCoordinatorPendingRequest(c)) {
+						System.out.println("List of Pending Request");
+						requestList.printCoordinatorPendingRequest(c);;
+						
+						System.out.println("Enter the requestID for further review");
+						int id = sc.nextInt();
+						
+						RequestProcessing rp = new RequestProcessing(requestList.getRequest(id), projectList);
+					}
+					else
+						System.out.println("You have no pending requests!\n");
 					break;
 					
 				case 2:

@@ -2,6 +2,7 @@ package fypms;
 
 import java.util.ArrayList;
 
+import fypms.Project.Status;
 import fypms.Request.requestStatus;
 import fypms.Request.requestType;
 
@@ -14,8 +15,8 @@ public class RequestList {
 	}
 	
 	//Adding new request to array
-	public void addChangeTitleRequest(Student s, Supervisor ss, String projectTitle) {
-		Request r = new Request(requestID, s, ss, requestType.CHANGE_TITLE, projectTitle);
+	public void addChangeTitleRequest(Student s, Supervisor ss, String projectTitle, Project p) {
+		Request r = new Request(requestID, s, ss, requestType.CHANGE_TITLE, projectTitle, p);
 		requestID++;
 		
 		requestList.add(r);
@@ -79,6 +80,7 @@ public class RequestList {
 				System.out.println("Request ID: " + r.getRequestID());
 				System.out.println("Requester: " + r.getsSender().getUserName());
 				System.out.println("Request Type: " + r.getType());
+				System.out.println("Request Status: " + r.getStatus());
 				if(r.getType() == requestType.REGISTER_FYP) {
 					System.out.println("Request from " + r.getsSender().getUserName() + " to register for ProjectID " + r.getP().getProjectID());
 				}
@@ -88,6 +90,7 @@ public class RequestList {
 				else if(r.getType() == requestType.CHANGE_TITLE) {
 					System.out.println("The proposed new title is: " + r.getProjectTitle());
 				}
+				System.out.println();
 			}
 		}
 	}
@@ -96,9 +99,11 @@ public class RequestList {
 		for(Request r: requestList) {
 			if(r.getSsSender() == ss) {
 				System.out.println("Request ID: " + r.getRequestID());
-				System.out.println("Requester: " + r.getSsReceiver().getUserName());
+				System.out.println("Requester: " + r.getSsSender().getUserName());
 				System.out.println("Request Type: " + r.getType());
-				System.out.println("Request from " + r.getSsReceiver().getUserName() + " to transfer ProjectID " + r.getP().getProjectID() + " to " + r.getReplacementSS().getUserName());
+				System.out.println("Request Status: " + r.getStatus());
+				System.out.println("Request from " + r.getSsSender().getUserName() + " to transfer ProjectID " + r.getP().getProjectID() + " to " + r.getReplacementSS().getUserName());
+				System.out.println();
 			}
 		}
 	}
@@ -109,7 +114,24 @@ public class RequestList {
 				System.out.println("Request ID: " + r.getRequestID());
 				System.out.println("Requester: " + r.getsSender().getUserName());
 				System.out.println("Request Type: " + r.getType());
+				System.out.println("Request Status: " + r.getStatus());
 				System.out.println("The proposed new title is: " + r.getProjectTitle());
+				System.out.println();
+			}
+		}
+	}
+	
+	public void printSupervisorPendingRequest(Supervisor ss) {
+		for(Request r: requestList) {
+			if(r.getSsReceiver() == ss) {
+				if(r.getStatus() == requestStatus.PENDING) {
+					System.out.println("Request ID: " + r.getRequestID());
+					System.out.println("Requester: " + r.getsSender().getUserName());
+					System.out.println("Request Type: " + r.getType());
+					System.out.println("Request Status: " + r.getStatus());
+					System.out.println("The proposed new title is: " + r.getProjectTitle());
+					System.out.println();
+				}
 			}
 		}
 	}
@@ -122,6 +144,7 @@ public class RequestList {
 					System.out.println("Request ID: " + r.getRequestID());
 					System.out.println("Requester: " + r.getsSender().getUserName());
 					System.out.println("Request Type: " + r.getType());
+					System.out.println("Request Status: " + r.getStatus());
 					System.out.println("Request from " + r.getsSender().getUserName() + " to register for ProjectID " + r.getP().getProjectID());
 					
 				}
@@ -129,14 +152,51 @@ public class RequestList {
 					System.out.println("Request ID: " + r.getRequestID());
 					System.out.println("Requester: " + r.getsSender().getUserName());
 					System.out.println("Request Type: " + r.getType());
+					System.out.println("Request Status: " + r.getStatus());
 					System.out.println("Request from " + r.getsSender().getUserName() + " to deregister for ProjectID " + r.getP().getProjectID());
 					
 				}
 				else if(r.getType() == requestType.TRANSFER_STUDENT) {
 					System.out.println("Request ID: " + r.getRequestID());
-					System.out.println("Requester: " + r.getsSender().getUserName());
+					System.out.println("Requester: " + r.getSsSender().getUserName());
 					System.out.println("Request Type: " + r.getType());
-					System.out.println("Request from " + r.getSsReceiver().getUserName() + " to transfer ProjectID " + r.getP().getProjectID() + " to " + r.getReplacementSS().getUserName());
+					System.out.println("Request Status: " + r.getStatus());
+					System.out.println("Request from " + r.getSsSender().getUserName() + " to transfer ProjectID " + r.getP().getProjectID() + " to " + r.getReplacementSS().getUserName());
+				}
+				System.out.println();
+			}
+		}
+	}
+	
+public void printCoordinatorPendingRequest(Coordinator c) {
+		
+		for(Request r: requestList) {
+			if(r.getcReceiver() == c) {
+				if(r.getStatus() == requestStatus.PENDING) {
+					if(r.getType() == requestType.REGISTER_FYP) {
+						System.out.println("Request ID: " + r.getRequestID());
+						System.out.println("Requester: " + r.getsSender().getUserName());
+						System.out.println("Request Type: " + r.getType());
+						System.out.println("Request Status: " + r.getStatus());
+						System.out.println("Request from " + r.getsSender().getUserName() + " to register for ProjectID " + r.getP().getProjectID());
+						
+					}
+					else if(r.getType() == requestType.DEREGISTER_FYP) {
+						System.out.println("Request ID: " + r.getRequestID());
+						System.out.println("Requester: " + r.getsSender().getUserName());
+						System.out.println("Request Type: " + r.getType());
+						System.out.println("Request Status: " + r.getStatus());
+						System.out.println("Request from " + r.getsSender().getUserName() + " to deregister for ProjectID " + r.getP().getProjectID());
+						
+					}
+					else if(r.getType() == requestType.TRANSFER_STUDENT) {
+						System.out.println("Request ID: " + r.getRequestID());
+						System.out.println("Requester: " + r.getSsSender().getUserName());
+						System.out.println("Request Type: " + r.getType());
+						System.out.println("Request Status: " + r.getStatus());
+						System.out.println("Request from " + r.getSsSender().getUserName() + " to transfer ProjectID " + r.getP().getProjectID() + " to " + r.getReplacementSS().getUserName());
+					}
+					System.out.println();
 				}
 			}
 		}

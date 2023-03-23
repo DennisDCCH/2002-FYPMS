@@ -31,12 +31,13 @@ public class Request {
 	private String projectTitle;
 	
 	//Change Title Request
-	public Request(int requestID, Student s, Supervisor ss, requestType type, String projectTitle) {
+	public Request(int requestID, Student s, Supervisor ss, requestType type, String projectTitle, Project p) {
 		this.requestID = requestID;
 		sSender = s;
 		ssReceiver = ss;
 		this.type = type;
 		this.projectTitle = projectTitle;
+		this.p = p;
 		status = requestStatus.PENDING;
 	}
 	
