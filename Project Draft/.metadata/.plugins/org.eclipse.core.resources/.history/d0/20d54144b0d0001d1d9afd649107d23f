@@ -1,0 +1,17 @@
+package Program.Control;
+
+public class UserTypeCmd implements InputCommand {
+
+	@Override
+	public  execute() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void execute1() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

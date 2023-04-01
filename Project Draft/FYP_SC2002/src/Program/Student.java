@@ -2,9 +2,12 @@ package Program;
 
 import java.util.ArrayList;
 
-public abstract class Student extends User {
+public class Student extends User {
 
 	private ArrayList<String> deregisteredProject;
+	private boolean projectStatus;
+	private StudentAppInterface menuDisplay = new StudentHaveProject();
+
 	
 	public Student(UserReadFile file) 
 	{
@@ -17,9 +20,12 @@ public abstract class Student extends User {
 	{
 		return this.deregisteredProject;
 	}
+	public void menu()
+	{
+		menuDisplay.menu();
+	}
 	
-	public abstract boolean haveProject();
+
 	
-	public abstract void menu();
 
 }

@@ -1,0 +1,10 @@
+package Program.Control;
+
+import java.util.Scanner;
+
+public interface StudentInputCommand extends InputCommand{
+	
+	public int execute(Scanner sc,Student student);
+	
+
+}

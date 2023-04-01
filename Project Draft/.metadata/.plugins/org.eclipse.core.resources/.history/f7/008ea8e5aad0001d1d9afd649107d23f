@@ -1,0 +1,9 @@
+package Program;
+
+public class Coordinator extends Supervisor {
+
+	public Coordinator(UserReadFile file) {
+		super(file);
+	}
+
+}
