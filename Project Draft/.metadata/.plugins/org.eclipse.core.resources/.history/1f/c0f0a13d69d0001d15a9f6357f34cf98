@@ -1,0 +1,71 @@
+package Program;
+
+import java.io.BufferedReader;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
+public class UserReadFile implements ReadFile{
+	
+	private ArrayList<String> Name;
+	private ArrayList<String> Email;
+	private ArrayList<String> userID;
+	
+	public UserReadFile()
+	{
+		this.Name = new ArrayList<String>();
+		this.Email = new ArrayList<String>();
+		this.userID = new ArrayList<String>();
+	}
+	
+	
+	public void readCSV(String path, String fileName)
+	{
+		/* Functions takes in file name as input, join with decla */
+		String delimiter = ","; // delimiter
+	    String line;
+		List<List<String>> lines = new ArrayList(); // ArrayList to store each line of csv file
+		
+		// read csv file
+		try 
+		{
+			BufferedReader br = new BufferedReader(new FileReader(path+fileName));
+
+           while((line = br.readLine()) != null){
+               List<String> values = Arrays.asList(line.split(delimiter));
+               lines.add(values);
+           }
+           for (int i=1;i<lines.size();i++)
+           {
+        	   Name.add(lines.get(i).get(0)); // get name
+        	   Email.add(lines.get(i).get(1)); // get email
+           }
+           
+           for (String n: Email)
+           {
+        	   String[] temp = n.split("@");
+        	   userID.add(temp[0]); // get userID
+        	   
+           }
+          
+		}
+		
+		
+		// catching exceptions
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+
+
+}

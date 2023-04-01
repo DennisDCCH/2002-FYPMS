@@ -1,0 +1,15 @@
+package Program;
+
+public class studentHaveProject extends Student {
+
+	public studentHaveProject(UserReadFile file) 
+	{
+		super(file);
+	}
+	
+	public boolean haveProject()
+	{
+		return true;
+	}
+
+}

@@ -1,0 +1,7 @@
+package Program;
+
+public interface ReadFile {
+	
+	public void readCSV(String fileName);
+
+}

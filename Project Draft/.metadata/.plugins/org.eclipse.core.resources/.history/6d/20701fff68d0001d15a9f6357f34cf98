@@ -1,0 +1,12 @@
+package Program;
+
+public class MainApp {
+	public static void main(String[] args) {
+		
+		String studentFileName = "student list.csv";
+		UserReadFile studentFile = new UserReadFile();
+		
+		studentFile.readCSV(studentFileName);
+	}
+
+}

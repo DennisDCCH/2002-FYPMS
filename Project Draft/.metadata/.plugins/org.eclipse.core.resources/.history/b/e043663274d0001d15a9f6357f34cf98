@@ -1,0 +1,45 @@
+package Program;
+
+public abstract class User implements UserInterface {
+	
+	private String userID;
+	private String password;
+	private String userName;
+	private UserReadFile file;
+	
+	public User(String userID, String userName)
+	{
+		this.userID = userID;
+		this.password = "password";
+		this.userName = userName;
+	}
+	
+	// verify password
+	public boolean checkPassword(String password)
+	{
+		return this.password.equals(password);
+	}
+	
+	// verify domain
+	public boolean checkDomain(String userID)
+	{
+		for (String i: file.getUserID())
+		{
+			if (i.equals(userID))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	// change password
+	public String changePassword(String password)
+	{
+		return password;
+	}
+	
+	// display menu when login
+	public abstract void menu();
+
+}

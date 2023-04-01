@@ -1,0 +1,10 @@
+package Program;
+
+public interface UserInterface {
+	
+	public String changePassword(String password);
+	public boolean checkDomain(String userID);
+	public boolean checkPassword(String password);
+	
+
+}

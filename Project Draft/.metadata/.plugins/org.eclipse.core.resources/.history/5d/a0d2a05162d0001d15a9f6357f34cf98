@@ -1,0 +1,45 @@
+package Program;
+
+import java.io.BufferedReader;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class UserReadFile {
+	
+	// read csv file
+	public void readCSV(String fileName)
+	{
+		String PATH = "C:\\Users\\user\\Desktop\\NTU SC2002\\Project Draft\\";
+		String line = "";
+		List<String[]> storehold = new ArrayList<>();
+		
+		try 
+		{
+			BufferedReader br = new BufferedReader(new FileReader(PATH+fileName));
+			while ((line = br.readLine()) != null)
+			{
+				storehold.add(line.split(","));
+				
+			}
+			for(String[] i: storehold)
+			{
+				System.out.println(i);
+			}
+		} 
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+
+
+}

@@ -1,0 +1,27 @@
+package Program;
+
+public abstract class User implements UserInterface {
+	
+	private String userID;
+	private String password;
+	private String userName;
+	private UserReadFile file;
+	
+	public User(String userID, String userName)
+	{
+		this.userID = userID;
+		this.password = "password";
+		this.userName = userName;
+	}
+	
+	public boolean checkPassword(String password)
+	{
+		return 
+	}
+	
+	public boolean checkDomain(String userID)
+	{
+		
+	}
+
+}
