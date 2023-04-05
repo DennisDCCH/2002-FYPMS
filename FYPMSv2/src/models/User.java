@@ -4,13 +4,15 @@ public class User {
 	protected String userName;
 	protected String email;
 	protected String userID;
+	protected String password;
 	
 	//Constructor
-	public User(String userName, String email) {
+	public User(String userName, String email, String password) {
 		this.userName = userName;
 		this.email = email;
 		String[] parts = email.split("@");
 		userID = parts[0];
+		this.password = password;
 	}
 
 	//Getter Setter
@@ -24,5 +26,13 @@ public class User {
 
 	public String getUserID() {
 		return userID;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

@@ -14,4 +14,12 @@ public class CoordinatorList {
 		for(Coordinator c: coordinatorList)
 			System.out.println(c.getUserID());
 	}
+	
+	public Coordinator checkDomain(String userID){
+		for (Coordinator c: coordinatorList) {
+			if(c.getUserID().equals(userID)) 
+				return c;
+		}
+		return null;
+	}
 }

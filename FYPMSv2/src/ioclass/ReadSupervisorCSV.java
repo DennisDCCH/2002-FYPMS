@@ -28,7 +28,7 @@ public class ReadSupervisorCSV {
 				 String[] fields = line.split(",");
 				 
 				 if(fields.length > 0) {
-					 Supervisor s = new Supervisor(fields[0], fields[1]); 
+					 Supervisor s = new Supervisor(fields[0], fields[1], fields[2]); 
 					 supervisorList.add(s);
 				 }
 			}

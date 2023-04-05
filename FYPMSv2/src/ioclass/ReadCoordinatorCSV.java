@@ -28,7 +28,7 @@ public class ReadCoordinatorCSV {
 				 String[] fields = line.split(",");
 				 
 				 if(fields.length > 0) {
-					 Coordinator s = new Coordinator(fields[0], fields[1]); 
+					 Coordinator s = new Coordinator(fields[0], fields[1], fields[2]); 
 					 studentList.add(s);
 				 }
 			}
