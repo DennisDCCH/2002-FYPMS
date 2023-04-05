@@ -4,12 +4,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.List;
 
-import models.Student;
+import models.Coordinator;
 
-public class OutputStudentCSV {
-	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\student.csv";
+public class OutputCoordinatorCSV {
+	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\supervisor.csv";
 	
-	public static void writeCSV(List<Student> students) {
+	public static void writeCSV(List<Coordinator> coordinators) {
 		File oldFile = new File(filePath);
 		oldFile.delete();
 		
@@ -19,12 +19,12 @@ public class OutputStudentCSV {
 			
 			fileWriter.append("Name, Email, Password");
 			fileWriter.append("\n");
-			for(Student s: students) {
-				fileWriter.append(s.getUserName());
+			for(Coordinator c: coordinators) {
+				fileWriter.append(c.getUserName());
 				fileWriter.append(",");
-				fileWriter.append(s.getEmail());
+				fileWriter.append(c.getEmail());
 				fileWriter.append(",");
-				fileWriter.append(s.getPassword());
+				fileWriter.append(c.getPassword());
 				fileWriter.append("\n");
 			}
 		}catch(Exception ex) {

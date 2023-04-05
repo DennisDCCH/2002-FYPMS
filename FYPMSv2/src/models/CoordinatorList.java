@@ -8,8 +8,7 @@ public class CoordinatorList {
 	List <Coordinator> coordinatorList;
 	
 	public CoordinatorList() {
-		ReadCoordinatorCSV csv = new ReadCoordinatorCSV();
-		coordinatorList = csv.readCSV();
+		coordinatorList = ReadCoordinatorCSV.readCSV();
 		
 		for(Coordinator c: coordinatorList)
 			System.out.println(c.getUserID());

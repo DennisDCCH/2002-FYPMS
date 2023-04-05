@@ -10,12 +10,8 @@ import models.Student;
 
 public class ReadStudentCSV {
 	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\student.csv";
-	
-	public ReadStudentCSV() {
-		
-	}
 
-	public List<Student> readCSV() {
+	public static List<Student> readCSV() {
 		BufferedReader reader = null;
 		
 		try {

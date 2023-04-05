@@ -28,7 +28,7 @@ public class StudentApp {
 						System.out.println("Enter new password: ");
 						String password = sc.next();
 						student.setPassword(password);
-						OutputStudentCSV updateCSV = new OutputStudentCSV(studentList.getStudentList());
+						OutputStudentCSV.writeCSV(studentList.getStudentList());
 						System.out.println("Password changed\n");
 						break;
 						
@@ -64,7 +64,7 @@ public class StudentApp {
 					System.out.println("Enter new password: ");
 					String password = sc.next();
 					student.setPassword(password);
-					OutputStudentCSV updateCSV = new OutputStudentCSV(studentList.getStudentList());
+					OutputStudentCSV.writeCSV(studentList.getStudentList());
 					System.out.println("Password changed\n");
 					break;
 					

@@ -10,11 +10,7 @@ import models.Supervisor;
 public class ReadSupervisorCSV {
 	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\supervisor.csv";
 	
-	public ReadSupervisorCSV() {
-		
-	}
-	
-	public List<Supervisor> readCSV(){
+	public static List<Supervisor> readCSV(){
 		BufferedReader reader = null;
 		
 		try {

@@ -8,8 +8,7 @@ public class StudentList {
 	List<Student> studentList;
 	
 	public StudentList() {
-		ReadStudentCSV csv = new ReadStudentCSV();
-		studentList = csv.readCSV();
+		studentList = ReadStudentCSV.readCSV();
 	}
 	
 	//Checking whether the student belongs in the student list

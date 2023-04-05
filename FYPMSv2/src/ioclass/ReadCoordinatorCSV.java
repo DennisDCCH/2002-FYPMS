@@ -10,11 +10,7 @@ import models.Coordinator;
 public class ReadCoordinatorCSV {
 	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\coordinator.csv";
 	
-	public ReadCoordinatorCSV() {
-		
-	}
-	
-	public List<Coordinator> readCSV() {
+	public static List<Coordinator> readCSV() {
 		BufferedReader reader = null;
 		
 		try {

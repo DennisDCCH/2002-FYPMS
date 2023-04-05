@@ -8,8 +8,7 @@ public class SupervisorList {
 	List <Supervisor> supervisorList;
 	
 	public SupervisorList() {
-		ReadSupervisorCSV csv = new ReadSupervisorCSV();
-		supervisorList = csv.readCSV();
+		supervisorList = ReadSupervisorCSV.readCSV();
 	}
 	
 	public Supervisor checkDomain(String userID){
