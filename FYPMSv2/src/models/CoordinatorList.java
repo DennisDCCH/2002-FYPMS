@@ -9,9 +9,6 @@ public class CoordinatorList {
 	
 	public CoordinatorList() {
 		coordinatorList = ReadCoordinatorCSV.readCSV();
-		
-		for(Coordinator c: coordinatorList)
-			System.out.println(c.getUserID());
 	}
 	
 	public Coordinator checkDomain(String userID){
@@ -20,5 +17,9 @@ public class CoordinatorList {
 				return c;
 		}
 		return null;
+	}
+
+	public List<Coordinator> getCoordinatorList() {
+		return coordinatorList;
 	}
 }

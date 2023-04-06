@@ -3,24 +3,18 @@ package display;
 import java.util.Scanner;
 
 import ioclass.OutputStudentCSV;
+import models.ProjectList;
 import models.Student;
 import models.StudentList;
 
 public class StudentApp {
-	Scanner sc = new Scanner(System.in);
-	private Student student;
-	private StudentList studentList;
 	
-	public StudentApp(Student student, StudentList studentList) {
-		this.student = student;
-		this.studentList = studentList;
-	}
-	
-	public void display() {
+	public static void display(Student student, ProjectList projectList) {
+		Scanner sc = new Scanner(System.in);
 		int choice = 0;
 		if(student.isHaveProject()) {
 			do {
-				mainDisplay();
+				mainDisplay(student);
 				System.out.println("Enter your choice: ");
 				choice = sc.nextInt();
 				switch(choice) {
@@ -28,7 +22,6 @@ public class StudentApp {
 						System.out.println("Enter new password: ");
 						String password = sc.next();
 						student.setPassword(password);
-						OutputStudentCSV.writeCSV(studentList.getStudentList());
 						System.out.println("Password changed\n");
 						break;
 						
@@ -56,7 +49,7 @@ public class StudentApp {
 		}
 		else {
 			do {
-				mainDisplay();
+				mainDisplay(student);
 				System.out.println("Enter your choice: ");
 				choice = sc.nextInt();
 				switch(choice) {
@@ -64,7 +57,6 @@ public class StudentApp {
 					System.out.println("Enter new password: ");
 					String password = sc.next();
 					student.setPassword(password);
-					OutputStudentCSV.writeCSV(studentList.getStudentList());
 					System.out.println("Password changed\n");
 					break;
 					
@@ -89,7 +81,7 @@ public class StudentApp {
 		}
 	}
 	
-	private void mainDisplay()
+	private static void mainDisplay(Student student)
 	{
 		if (student.isHaveProject()){
 			// Have Project

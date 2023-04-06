@@ -18,4 +18,8 @@ public class SupervisorList {
 		}
 		return null;
 	}
+
+	public List<Supervisor> getSupervisorList() {
+		return supervisorList;
+	}
 }
