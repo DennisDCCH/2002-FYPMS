@@ -2,14 +2,16 @@ package display;
 
 import java.util.Scanner;
 
+import enumclass.ProjectStatus;
 import ioclass.OutputStudentCSV;
+import models.PrintProjectList;
 import models.ProjectList;
 import models.Student;
 import models.StudentList;
 
 public class StudentApp {
 	
-	public static void display(Student student, ProjectList projectList) {
+	public static void display(Student student) {
 		Scanner sc = new Scanner(System.in);
 		int choice = 0;
 		if(student.isHaveProject()) {
@@ -18,6 +20,7 @@ public class StudentApp {
 				System.out.println("Enter your choice: ");
 				choice = sc.nextInt();
 				switch(choice) {
+					// Change Password
 					case 1:
 						System.out.println("Enter new password: ");
 						String password = sc.next();
@@ -25,18 +28,25 @@ public class StudentApp {
 						System.out.println("Password changed\n");
 						break;
 						
+					// View Registered Project
 					case 2:
+						student.printMyProjects();
 						break;
 						
+					// View Request History and Status
 					case 3:
+						student.printMyRequest();
 						break;
 						
+					// Request to Change Project Title
 					case 4:
 						break;
 						
+					// Request to Deregister FYP
 					case 5:
 						break;
 						
+					// Logout
 					case 6:
 						System.out.println("Logging out...\n");
 						break;
@@ -52,7 +62,8 @@ public class StudentApp {
 				mainDisplay(student);
 				System.out.println("Enter your choice: ");
 				choice = sc.nextInt();
-				switch(choice) {
+				switch(choice) {	
+				// Change Password
 				case 1:
 					System.out.println("Enter new password: ");
 					String password = sc.next();
@@ -60,15 +71,21 @@ public class StudentApp {
 					System.out.println("Password changed\n");
 					break;
 					
+				// View Available Project
 				case 2:
+					PrintProjectList.printStatusSpecificProjects(ProjectStatus.AVAILABLE);
 					break;
 					
+				// View Request History and Status
 				case 3:
+					student.printMyRequest();
 					break;
 					
+				// Request to Register FYP
 				case 4:
 					break;
 					
+				// Logout
 				case 5:
 					System.out.println("Logging out...\n");
 					break;

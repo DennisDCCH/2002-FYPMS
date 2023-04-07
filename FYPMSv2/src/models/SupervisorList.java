@@ -5,13 +5,9 @@ import java.util.List;
 import ioclass.ReadSupervisorCSV;
 
 public class SupervisorList {
-	List <Supervisor> supervisorList;
+	private static List <Supervisor> supervisorList = ReadSupervisorCSV.readCSV();
 	
-	public SupervisorList() {
-		supervisorList = ReadSupervisorCSV.readCSV();
-	}
-	
-	public Supervisor checkDomain(String userID){
+	public static Supervisor checkDomain(String userID){
 		for (Supervisor s: supervisorList) {
 			if(s.getUserID().equals(userID)) 
 				return s;
@@ -19,7 +15,7 @@ public class SupervisorList {
 		return null;
 	}
 
-	public List<Supervisor> getSupervisorList() {
+	public static List<Supervisor> getSupervisorList() {
 		return supervisorList;
 	}
 }

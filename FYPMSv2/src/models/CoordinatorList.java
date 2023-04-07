@@ -5,13 +5,9 @@ import java.util.List;
 import ioclass.ReadCoordinatorCSV;
 
 public class CoordinatorList {
-	List <Coordinator> coordinatorList;
+	private static List <Coordinator> coordinatorList = ReadCoordinatorCSV.readCSV();
 	
-	public CoordinatorList() {
-		coordinatorList = ReadCoordinatorCSV.readCSV();
-	}
-	
-	public Coordinator checkDomain(String userID){
+	public static Coordinator checkDomain(String userID){
 		for (Coordinator c: coordinatorList) {
 			if(c.getUserID().equals(userID)) 
 				return c;
@@ -19,7 +15,7 @@ public class CoordinatorList {
 		return null;
 	}
 
-	public List<Coordinator> getCoordinatorList() {
+	public static List<Coordinator> getCoordinatorList() {
 		return coordinatorList;
 	}
 }

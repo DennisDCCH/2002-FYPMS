@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 import ioclass.OutputCoordinatorCSV;
 import ioclass.OutputProjectCSV;
+import ioclass.OutputRequestCSV;
 import ioclass.OutputStudentCSV;
 import ioclass.OutputSupervisorCSV;
 import models.Coordinator;
 import models.CoordinatorList;
 import models.ProjectList;
+import models.RequestList;
 import models.Student;
 import models.StudentList;
 import models.Supervisor;
@@ -18,11 +20,6 @@ public class StartingDisplay {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		
-		StudentList studentList = new StudentList();
-		SupervisorList supervisorList = new SupervisorList();
-		CoordinatorList coordinatorList = new CoordinatorList();
-		ProjectList projectList = new ProjectList();
 		
 		int choice = 0;
 		while (true) {
@@ -37,20 +34,22 @@ public class StartingDisplay {
 			
 			switch(choice) {
 				case 1:
-					Login.login(studentList, supervisorList, coordinatorList, projectList);
+					Login.login();
 					break;
 				case 2:
 					System.out.println("Quiting...");
-					OutputStudentCSV.writeCSV(studentList.getStudentList());
-					OutputSupervisorCSV.writeCSV(supervisorList.getSupervisorList());
-					OutputCoordinatorCSV.writeCSV(coordinatorList.getCoordinatorList());
-					OutputProjectCSV.writeCSV(projectList.getProjectList());
 					System.exit(0);
 				default:
 					System.out.println("Please choose a valid option");
 					System.out.println();
 					break;
 			}
+			
+			OutputStudentCSV.writeCSV(StudentList.getStudentList());
+			OutputSupervisorCSV.writeCSV(SupervisorList.getSupervisorList());
+			OutputCoordinatorCSV.writeCSV(CoordinatorList.getCoordinatorList());
+			OutputProjectCSV.writeCSV(ProjectList.getProjectList());
+			OutputRequestCSV.writeCSV(RequestList.getRequestList());
 		}
 	}
 }

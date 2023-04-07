@@ -2,17 +2,20 @@ package display;
 
 import java.util.Scanner;
 
+import enumclass.ProjectStatus;
+import models.Project;
 import models.ProjectList;
+import models.RequestProcess;
 import models.Supervisor;
 
 public class SupervisorApp {
 	
-	public static void display(Supervisor supervisor, ProjectList projectList) {
+	public static void display(Supervisor supervisor) {
 		Scanner sc = new Scanner(System.in);
 		
 		int choice;
 		do {
-			mainDisplay();
+			mainDisplay(supervisor);
 			choice = sc.nextInt();
 			switch(choice) {
 				// Change Password
@@ -25,16 +28,17 @@ public class SupervisorApp {
 					
 				// My Projects
 				case 2:
-					supervisorProjectDisplay(supervisor, projectList);
+					supervisorProjectDisplay(supervisor);
 					break;
 					
 				// Request
 				case 3:
-					supervisorRequestDisplay();
+					supervisorRequestDisplay(supervisor);
 					break;
 				
 				// Request to transfer Student
 				case 4:
+					// Not done
 					break;
 					
 				// Logout
@@ -50,9 +54,8 @@ public class SupervisorApp {
 		
 	}
 	
-	public static void mainDisplay() {
-		boolean bool= true;
-		if(bool) {
+	private static void mainDisplay(Supervisor supervisor) {
+		if(supervisor.pendingRequest()) {
 			System.out.println("========================================");
 			System.out.println("|1. Change Password                    |");
 			System.out.println("|2. My Projects                        |");
@@ -73,7 +76,8 @@ public class SupervisorApp {
 			System.out.println("Enter your choice: ");
 		}
 	}
-	private static void supervisorProjectDisplay(Supervisor supervisor, ProjectList projectList) {
+	
+	private static void supervisorProjectDisplay(Supervisor supervisor) {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
 		do {
@@ -90,16 +94,36 @@ public class SupervisorApp {
 				case 1:
 					System.out.println("Enter Project Title: ");
 					String projectTitle = sc.next();
-					projectList.addProject(supervisor.getUserName(), projectTitle);
+					Project p = new Project(ProjectList.getNextProjectID(), supervisor.getUserName(), null, projectTitle, ProjectStatus.AVAILABLE);
+					
+					// Adding to supervisor list of projects
+					supervisor.addProject(p);
+					// Adding to the overall list of projects
+					ProjectList.addProject(p);
+					
 					System.out.println("Project created!\n");
 					break;
 					
 				// Update Projects
 				case 2:
+					supervisor.printMyProjects();
+					System.out.println("Enter the Project ID to update");
+					int id = sc.nextInt();
+					if(supervisor.getProject(id) != null) {
+						System.out.println("Enter the new project title: ");
+						String title = sc.next();
+						supervisor.getProject(id).setProjectTitle(title);
+						System.out.println("Your project have been updated!");
+					}
+					else {
+						System.out.println("You have entered a invalid project ID!");
+						System.out.println("Returning back to main menu...\n");
+					}
 					break;
 					
 				// View Projects
 				case 3:
+					supervisor.printMyProjects();
 					break;
 					
 				// Return
@@ -115,36 +139,73 @@ public class SupervisorApp {
 			
 	}
 	
-	private static void supervisorRequestDisplay() {
+	private static void supervisorRequestDisplay(Supervisor supervisor) {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
-		do {
-			System.out.println("========================================");
-			System.out.println("|1. Pending Request                    |");
-			System.out.println("|2. Outgoing Request History and Status|");
-			System.out.println("|3. Incoming Request History and Status|");
-			System.out.println("|4. Return                             |");
-			System.out.println("========================================");
-			System.out.println("Enter your choice: ");
-			option = sc.nextInt();
-			switch(option) {
-				case 1:
-					break;
-					
-				case 2:
-					break;
-					
-				case 3:
-					break;
-					
-				case 4:
-					System.out.println("Returning... \n");
-					break;
-					
-				default:
-					System.out.println("Please choose a valid option\n");
-					break;	
-			}
-		}while(option != 4);
+		if(supervisor.pendingRequest()) {
+			do {
+				System.out.println("========================================");
+				System.out.println("|1. Pending Request                    |");
+				System.out.println("|2. Request History and Status         |");
+				System.out.println("|3. Return                             |");
+				System.out.println("========================================");
+				System.out.println("Enter your choice: ");
+				option = sc.nextInt();
+				switch(option) {
+					// Pending Request
+					case 1:
+						supervisor.printPendingRequest();
+						System.out.println("Enter the request ID to process: ");
+						int id = sc.nextInt();
+						if(supervisor.getRequest(id) != null) {
+							RequestProcess.process(supervisor.getRequest(id));
+						}
+						else {
+							System.out.println("You have entered a invalid request ID!");
+							System.out.println("Returning back to main menu...\n");
+						}
+						break;
+						
+					// Request History and Status
+					case 2:
+						supervisor.printMyRequest();
+						break;
+						
+					// Return
+					case 3:
+						System.out.println("Returning... \n");
+						break;
+						
+					default:
+						System.out.println("Please choose a valid option\n");
+						break;	
+				}
+			}while(option != 3);
+		}
+		else {
+			do {
+				System.out.println("========================================");
+				System.out.println("|1. Request History and Status         |");
+				System.out.println("|2. Return                             |");
+				System.out.println("========================================");
+				System.out.println("Enter your choice: ");
+				option = sc.nextInt();
+				switch(option) {
+					// Request History and Status
+					case 1:
+						supervisor.printMyRequest();
+						break;
+						
+					// Return	
+					case 2:
+						System.out.println("Returning... \n");
+						break;
+						
+					default:
+						System.out.println("Please choose a valid option\n");
+						break;	
+				}
+			}while(option != 2);
+		}
 	}
 }

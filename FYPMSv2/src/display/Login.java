@@ -12,7 +12,7 @@ import models.SupervisorList;
 
 public class Login {
 	
-	public static void login(StudentList studentList, SupervisorList supervisorList, CoordinatorList coordinatorList, ProjectList projectList) {
+	public static void login() {
 		Scanner sc = new Scanner(System.in);
 			
 		while (true) {
@@ -22,14 +22,14 @@ public class Login {
 			System.out.println("Enter PASSWORD: ");
 			String password = sc.next();
 			
-			Student student = studentList.checkDomain(userID);
-			Supervisor supervisor = supervisorList.checkDomain(userID);
-			Coordinator coordinator = coordinatorList.checkDomain(userID);
+			Student student = StudentList.checkDomain(userID);
+			Supervisor supervisor = SupervisorList.checkDomain(userID);
+			Coordinator coordinator = CoordinatorList.checkDomain(userID);
 			
 			if(student != null) {
 				if(student.getPassword().equals(password)) {
 					System.out.println("Login successfully!");
-					StudentApp.display(student, projectList);
+					StudentApp.display(student);
 					return;
 				}
 				else {
@@ -41,7 +41,7 @@ public class Login {
 			else if (supervisor != null) {
 				if(supervisor.getPassword().equals(password)) {
 					System.out.println("Login successfully!");
-					SupervisorApp.display(supervisor, projectList);
+					SupervisorApp.display(supervisor);
 					return;
 				}
 				else {
