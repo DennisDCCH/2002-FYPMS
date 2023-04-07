@@ -7,8 +7,8 @@ import ioclass.ReadSupervisorCSV;
 public class SupervisorList {
 	List <Supervisor> supervisorList;
 	
-	public SupervisorList(ProjectList projectList) {
-		supervisorList = ReadSupervisorCSV.readCSV(projectList);
+	public SupervisorList() {
+		supervisorList = ReadSupervisorCSV.readCSV();
 	}
 	
 	public Supervisor checkDomain(String userID){

@@ -5,13 +5,12 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.ProjectList;
 import models.Supervisor;
 
 public class ReadSupervisorCSV {
 	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\supervisor.csv";
 	
-	public static List<Supervisor> readCSV(ProjectList projectList){
+	public static List<Supervisor> readCSV(){
 		BufferedReader reader = null;
 		
 		try {
@@ -25,7 +24,7 @@ public class ReadSupervisorCSV {
 				 String[] fields = line.split(",");
 				 
 				 if(fields.length > 0) {
-					 Supervisor s = new Supervisor(fields[0], fields[1], fields[2], projectList); 
+					 Supervisor s = new Supervisor(fields[0], fields[1], fields[2]); 
 					 supervisorList.add(s);
 				 }
 			}

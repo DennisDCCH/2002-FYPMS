@@ -6,13 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Coordinator;
-import models.ProjectList;
 import models.User;
 
 public class ReadCoordinatorCSV {
 	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\coordinator.csv";
 	
-	public static List<Coordinator> readCSV(ProjectList projectList) {
+	public static List<Coordinator> readCSV() {
 		BufferedReader reader = null;
 		
 		try {
@@ -26,7 +25,7 @@ public class ReadCoordinatorCSV {
 				 String[] fields = line.split(",");
 				 
 				 if(fields.length > 0) {
-					 Coordinator s = new Coordinator(fields[0], fields[1], fields[2], projectList); 
+					 Coordinator s = new Coordinator(fields[0], fields[1], fields[2]); 
 					 coordinatorList.add(s);
 				 }
 			}

@@ -96,12 +96,10 @@ public class SupervisorApp {
 					
 				// Update Projects
 				case 2:
-					
 					break;
 					
 				// View Projects
 				case 3:
-					supervisor.printProjectDetails();
 					break;
 					
 				// Return

@@ -7,8 +7,8 @@ import ioclass.ReadCoordinatorCSV;
 public class CoordinatorList {
 	List <Coordinator> coordinatorList;
 	
-	public CoordinatorList(ProjectList projectList) {
-		coordinatorList = ReadCoordinatorCSV.readCSV(projectList);
+	public CoordinatorList() {
+		coordinatorList = ReadCoordinatorCSV.readCSV();
 	}
 	
 	public Coordinator checkDomain(String userID){

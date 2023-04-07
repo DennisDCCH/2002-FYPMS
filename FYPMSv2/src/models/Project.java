@@ -18,13 +18,12 @@ public class Project {
 		this.status = status;
 	}
 	
-	public void printProject() {
-		System.out.println("Project ID: " + projectID);
-		System.out.println("Project Supervisor: " + supervisorName);
-		System.out.println("Project Student: " + studentName);
-		System.out.println("Project Title: " + projectTitle);
-		System.out.println("Project Status: " + status);
-	}
+//	public Project(User supervisor, String projectTitle) {
+//		projectID = ProjectList.getTotalProjectCount();
+//		supervisorName = supervisor.getUserName();
+//		this.projectTitle = projectTitle;
+//		status = ProjectStatus.AVAILABLE;
+//	}
 	
 	//Getter Setter
 	public String getStudentName() {

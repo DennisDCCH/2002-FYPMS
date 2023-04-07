@@ -18,7 +18,6 @@ public class StudentApp {
 				System.out.println("Enter your choice: ");
 				choice = sc.nextInt();
 				switch(choice) {
-					// Change Password
 					case 1:
 						System.out.println("Enter new password: ");
 						String password = sc.next();
@@ -26,24 +25,18 @@ public class StudentApp {
 						System.out.println("Password changed\n");
 						break;
 						
-					// View Registered Project
 					case 2:
-						student.printProjectDetails();
 						break;
 						
-					// View Request History and Status
 					case 3:
 						break;
 						
-					// Request to Change Project Title
 					case 4:
 						break;
 						
-					// Request to Deregister from Project
 					case 5:
 						break;
 						
-					// Logout
 					case 6:
 						System.out.println("Logging out...\n");
 						break;
@@ -60,8 +53,6 @@ public class StudentApp {
 				System.out.println("Enter your choice: ");
 				choice = sc.nextInt();
 				switch(choice) {
-				
-				// Change Password
 				case 1:
 					System.out.println("Enter new password: ");
 					String password = sc.next();
@@ -69,19 +60,15 @@ public class StudentApp {
 					System.out.println("Password changed\n");
 					break;
 					
-				// View Available Projects
 				case 2:
 					break;
 					
-				// View Request History and Status
 				case 3:
 					break;
-				
-				// Request to Register FYP
+					
 				case 4:
 					break;
 					
-				// Logout
 				case 5:
 					System.out.println("Logging out...\n");
 					break;
@@ -89,7 +76,7 @@ public class StudentApp {
 				default:
 					System.out.println("Please choose a valid option\n");
 					break;
-				}
+			}
 			}while(choice != 5);
 		}
 	}

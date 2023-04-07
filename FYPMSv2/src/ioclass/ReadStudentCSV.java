@@ -5,14 +5,13 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.ProjectList;
 import models.Student;
 
 
 public class ReadStudentCSV {
 	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\student.csv";
 
-	public static List<Student> readCSV(ProjectList projectList) {
+	public static List<Student> readCSV() {
 		BufferedReader reader = null;
 		
 		try {
@@ -26,7 +25,7 @@ public class ReadStudentCSV {
 				 String[] fields = line.split(",");
 				 
 				 if(fields.length > 0) {
-					 Student s = new Student(fields[0], fields[1], fields[2], projectList); 
+					 Student s = new Student(fields[0], fields[1], fields[2]); 
 					 studentList.add(s);
 				 }
 			}
