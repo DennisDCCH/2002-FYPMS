@@ -6,12 +6,9 @@ import ioclass.OutputCoordinatorCSV;
 import ioclass.OutputProjectCSV;
 import ioclass.OutputStudentCSV;
 import ioclass.OutputSupervisorCSV;
-import models.Coordinator;
 import models.CoordinatorList;
 import models.ProjectList;
-import models.Student;
 import models.StudentList;
-import models.Supervisor;
 import models.SupervisorList;
 
 public class StartingDisplay {
@@ -19,10 +16,11 @@ public class StartingDisplay {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		StudentList studentList = new StudentList();
-		SupervisorList supervisorList = new SupervisorList();
-		CoordinatorList coordinatorList = new CoordinatorList();
 		ProjectList projectList = new ProjectList();
+		StudentList studentList = new StudentList(projectList);
+		SupervisorList supervisorList = new SupervisorList(projectList);
+		CoordinatorList coordinatorList = new CoordinatorList(projectList);
+		
 		
 		int choice = 0;
 		while (true) {

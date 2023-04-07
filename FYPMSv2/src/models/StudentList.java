@@ -7,8 +7,8 @@ import ioclass.ReadStudentCSV;
 public class StudentList {
 	List<Student> studentList;
 	
-	public StudentList() {
-		studentList = ReadStudentCSV.readCSV();
+	public StudentList(ProjectList projectList) {
+		studentList = ReadStudentCSV.readCSV(projectList);
 	}
 	
 	//Checking whether the student belongs in the student list

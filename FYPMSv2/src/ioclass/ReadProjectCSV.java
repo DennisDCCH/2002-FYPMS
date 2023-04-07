@@ -27,7 +27,41 @@ public class ReadProjectCSV {
 				 if(fields.length > 0) {
 					 Project s = new Project(Integer.valueOf(fields[0]), fields[1], fields[2], fields[3], ProjectStatus.valueOf(fields[4])); 
 					 projectList.add(s);
-				 }
+				 }	  
+			}
+			return projectList;
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			try {
+				reader.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	public static List<Project> readUserProjectCSV(String userName) {
+		BufferedReader reader = null;
+		
+		try {
+			List<Project> projectList = new ArrayList<Project>();
+			String line = ",";
+			
+			reader = new BufferedReader(new FileReader(filePath));
+			reader.readLine();
+			
+			while((line = reader.readLine()) != null) {
+				 String[] fields = line.split(",");
+				 
+				 if(fields[1].equals(userName) || fields[2].equals(userName)) {
+					 if(fields.length > 0) {
+						 Project s = new Project(Integer.valueOf(fields[0]), fields[1], fields[2], fields[3], ProjectStatus.valueOf(fields[4])); 
+						 projectList.add(s);
+					 }
+				 }	 	  
 			}
 			return projectList;
 			

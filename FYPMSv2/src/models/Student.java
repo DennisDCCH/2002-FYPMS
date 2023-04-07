@@ -3,8 +3,8 @@ package models;
 public class Student extends User {
 	private boolean haveProject;
 	//Constructor
-	public Student(String userName, String email, String password) {
-		super(userName, email, password);
+	public Student(String userName, String email, String password, ProjectList projectList) {
+		super(userName, email, password, projectList);
 		haveProject = false;
 	}
 	
