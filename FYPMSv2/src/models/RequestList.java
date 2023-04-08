@@ -6,7 +6,11 @@ import java.util.List;
 import ioclass.ReadRequestCSV;
 
 public class RequestList {
-	private static List<Request> requestList = ReadRequestCSV.readCSV();
+	private static List<Request> requestList;
+	
+	public static void intialise() {
+		requestList = ReadRequestCSV.readCSV();
+	}
 	
 	public static void addRequest(Request r) {
 		requestList.add(r);

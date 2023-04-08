@@ -38,10 +38,10 @@ public class Login {
 					System.out.println();
 				}
 			}
-			else if (supervisor != null) {
-				if(supervisor.getPassword().equals(password)) {
+			else if(coordinator != null) {
+				if(coordinator.getPassword().equals(password)) {
 					System.out.println("Login successfully!");
-					SupervisorApp.display(supervisor);
+					CoordinatorApp.display(coordinator);
 					return;
 				}
 				else {
@@ -50,9 +50,10 @@ public class Login {
 					System.out.println();
 				}
 			}
-			else if(coordinator != null) {
-				if(coordinator.getPassword().equals(password)) {
+			else if (supervisor != null) {
+				if(supervisor.getPassword().equals(password)) {
 					System.out.println("Login successfully!");
+					SupervisorApp.display(supervisor);
 					return;
 				}
 				else {

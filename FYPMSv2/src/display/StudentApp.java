@@ -3,9 +3,15 @@ package display;
 import java.util.Scanner;
 
 import enumclass.ProjectStatus;
+import enumclass.RequestStatus;
 import ioclass.OutputStudentCSV;
+import models.ChangeTitleRequest;
+import models.DeregisterFYPRequest;
 import models.PrintProjectList;
 import models.ProjectList;
+import models.RegisterFYPRequest;
+import models.Request;
+import models.RequestList;
 import models.Student;
 import models.StudentList;
 
@@ -35,15 +41,36 @@ public class StudentApp {
 						
 					// View Request History and Status
 					case 3:
-						student.printMyRequest();
+						if(student.getRequestList().size() > 0)
+							student.printMyRequest();
+						else
+							System.out.println("You have no request history\n");
 						break;
 						
 					// Request to Change Project Title
 					case 4:
+						System.out.println("Enter the new project title");
+						String title = sc.next();
+						Request changeTitleRequest = new ChangeTitleRequest(RequestList.getNextRequestID(), student.getUserName(), student.getProject().getSupervisorName(),
+								student.getProject().getProjectID(), RequestStatus.PENDING, title);
+						
+						//Appened request to overall requestList and student requestList
+						student.addRequest(changeTitleRequest);
+						RequestList.addRequest(changeTitleRequest);
+						
+						System.out.println("The request have been send out.\n");
 						break;
 						
 					// Request to Deregister FYP
 					case 5:
+						Request deregisterRequest = new DeregisterFYPRequest(RequestList.getNextRequestID(), student.getUserName(), "Li Fang", student.getProject().getProjectID(),
+								RequestStatus.PENDING, null);
+						
+						//Appened request to overall requestList and student requestList
+						student.addRequest(deregisterRequest);
+						RequestList.addRequest(deregisterRequest);
+						
+						System.out.println("The request have been send out.\n");
 						break;
 						
 					// Logout
@@ -78,11 +105,32 @@ public class StudentApp {
 					
 				// View Request History and Status
 				case 3:
-					student.printMyRequest();
+					if(student.getRequestList().size() > 0)
+						student.printMyRequest();
+					else
+						System.out.println("You have no request history\n");
 					break;
 					
 				// Request to Register FYP
 				case 4:
+					PrintProjectList.printStatusSpecificProjects(ProjectStatus.AVAILABLE);
+					System.out.println("Enter the project ID to register for: ");
+					int id = sc.nextInt();
+					
+					if(ProjectList.getSpecificAvailableProject(id) != null) {
+						ProjectList.getSpecificAvailableProject(id).setStatus(ProjectStatus.RESERVED);
+						Request registerRequest = new RegisterFYPRequest(RequestList.getNextRequestID(), student.getUserName(), "Li Fang", id, RequestStatus.PENDING, null);
+					
+						//Appened request to overall requestList and student requestList
+						student.addRequest(registerRequest);
+						RequestList.addRequest(registerRequest);
+						
+						System.out.println("The request have been send out.\n");
+					}
+					else {
+						System.out.println("You have entered a invalid project ID!");
+						System.out.println("Returning back to main menu...\n");
+					}
 					break;
 					
 				// Logout

@@ -37,8 +37,10 @@ public class User {
 	
 	public void printPendingRequest() {
 		for(Request r: requestList) {
-			if(r.getStatus() == RequestStatus.PENDING)
-				r.printRequestDetails();
+			if(r.getStatus() == RequestStatus.PENDING) {
+				if(r.getResponderName().equals(userName))
+					r.printRequestDetails();
+			}
 		}
 	}
 	
@@ -56,8 +58,10 @@ public class User {
 	
 	public boolean pendingRequest() {
 		for(Request r: requestList) {
-			if(r.getStatus() == RequestStatus.PENDING)
-				return true;
+			if(r.getStatus() == RequestStatus.PENDING) {
+				if(r.getResponderName().equals(userName))
+					return true;
+			}
 		}
 		return false;
 	}
@@ -99,5 +103,13 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<Project> getProjectList() {
+		return projectList;
+	}
+
+	public List<Request> getRequestList() {
+		return requestList;
 	}
 }

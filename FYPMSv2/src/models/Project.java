@@ -27,6 +27,10 @@ public class Project {
 		System.out.println();
 	}
 	
+	public void removeStudent() {
+		studentName = null;
+	}
+	
 	//Getter Setter
 	public String getStudentName() {
 		return studentName;

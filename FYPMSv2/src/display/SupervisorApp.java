@@ -3,10 +3,15 @@ package display;
 import java.util.Scanner;
 
 import enumclass.ProjectStatus;
+import enumclass.RequestStatus;
 import models.Project;
 import models.ProjectList;
+import models.Request;
+import models.RequestList;
 import models.RequestProcess;
 import models.Supervisor;
+import models.SupervisorList;
+import models.TransferStudentRequest;
 
 public class SupervisorApp {
 	
@@ -37,8 +42,51 @@ public class SupervisorApp {
 					break;
 				
 				// Request to transfer Student
+					//Cannot transfer to coordinator... 
 				case 4:
-					// Not done
+					int projectID;
+					String userID;
+					if(supervisor.getProjectList().size() > 0) {
+						supervisor.printAllocatedProjects();
+						while(true) {
+							System.out.println("Enter the projectID that you want to transfer: ");
+							projectID = sc.nextInt();
+							if(supervisor.getProject(projectID) != null) {
+								break;
+							}
+							else {
+								System.out.println("You have entered a invalid project ID!");
+								System.out.println("Please try again!\n");
+							}
+						}
+						while(true) {
+							System.out.println("Enter the new supervisor USERID");
+							userID = sc.next();
+							if(SupervisorList.getSpecificSupervisorID(userID) != null) {
+								if(SupervisorList.getSpecificSupervisorID(userID).getSupervisingProjectCount() < 2) {
+									//Make the new request
+									Request r = new TransferStudentRequest(RequestList.getNextRequestID(), supervisor.getUserName(), "Li Fang", projectID, RequestStatus.PENDING, userID);
+									
+									//Appened request to overall requestList and supervisor requestList
+									supervisor.addRequest(r);
+									RequestList.addRequest(r);
+									
+									System.out.println("The request have been send out.\n");
+									break;
+								}
+								else {
+									System.out.println(userID + " cannot take on more projects!");
+									System.out.println("Please try again!\n");
+								}
+							}
+							else {
+								System.out.println("You have entered a invalid USERID");
+								System.out.println("Please try again!\n");
+							}
+						}
+					}
+					else 
+						System.out.println("You have no projects currently");
 					break;
 					
 				// Logout
@@ -100,6 +148,8 @@ public class SupervisorApp {
 					supervisor.addProject(p);
 					// Adding to the overall list of projects
 					ProjectList.addProject(p);
+					//If already have 2 allocated project need to set this new project as unavailable
+					supervisor.checkAndSetProjectStatus();
 					
 					System.out.println("Project created!\n");
 					break;
@@ -142,14 +192,10 @@ public class SupervisorApp {
 	private static void supervisorRequestDisplay(Supervisor supervisor) {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
-		if(supervisor.pendingRequest()) {
-			do {
-				System.out.println("========================================");
-				System.out.println("|1. Pending Request                    |");
-				System.out.println("|2. Request History and Status         |");
-				System.out.println("|3. Return                             |");
-				System.out.println("========================================");
-				System.out.println("Enter your choice: ");
+		boolean bool = true;
+		do {
+			if(supervisor.pendingRequest()) {
+				requestDisplay(supervisor);
 				option = sc.nextInt();
 				switch(option) {
 					// Pending Request
@@ -168,44 +214,64 @@ public class SupervisorApp {
 						
 					// Request History and Status
 					case 2:
-						supervisor.printMyRequest();
+						if(supervisor.getRequestList().size() > 0)
+							supervisor.printMyRequest();
+						else
+							System.out.println("You have no request history");
 						break;
 						
 					// Return
 					case 3:
 						System.out.println("Returning... \n");
+						bool = false;
 						break;
 						
 					default:
 						System.out.println("Please choose a valid option\n");
 						break;	
 				}
-			}while(option != 3);
-		}
-		else {
-			do {
-				System.out.println("========================================");
-				System.out.println("|1. Request History and Status         |");
-				System.out.println("|2. Return                             |");
-				System.out.println("========================================");
-				System.out.println("Enter your choice: ");
+			}
+			else {
+				requestDisplay(supervisor);
 				option = sc.nextInt();
 				switch(option) {
 					// Request History and Status
 					case 1:
-						supervisor.printMyRequest();
+						if(supervisor.getRequestList().size() > 0)
+							supervisor.printMyRequest();
+						else
+							System.out.println("You have no request history");
 						break;
 						
 					// Return	
 					case 2:
 						System.out.println("Returning... \n");
+						bool = false;
 						break;
 						
 					default:
 						System.out.println("Please choose a valid option\n");
 						break;	
 				}
-			}while(option != 2);
+			}
+		}while(bool);
+	}
+	
+	private static void requestDisplay(Supervisor supervisor) {
+		if(supervisor.pendingRequest()) {
+			System.out.println("========================================");
+			System.out.println("|1. Pending Request                    |");
+			System.out.println("|2. Request History and Status         |");
+			System.out.println("|3. Return                             |");
+			System.out.println("========================================");
+			System.out.println("Enter your choice: ");
+		}
+		else {
+			System.out.println("========================================");
+			System.out.println("|1. Request History and Status         |");
+			System.out.println("|2. Return                             |");
+			System.out.println("========================================");
+			System.out.println("Enter your choice: ");
 		}
 	}
 }

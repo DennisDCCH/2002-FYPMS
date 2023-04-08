@@ -5,7 +5,11 @@ import java.util.List;
 import ioclass.ReadCoordinatorCSV;
 
 public class CoordinatorList {
-	private static List <Coordinator> coordinatorList = ReadCoordinatorCSV.readCSV();
+	private static List <Coordinator> coordinatorList;
+	
+	public static void initalise() {
+		coordinatorList = ReadCoordinatorCSV.readCSV();
+	}
 	
 	public static Coordinator checkDomain(String userID){
 		for (Coordinator c: coordinatorList) {

@@ -34,7 +34,19 @@ public class StartingDisplay {
 			
 			switch(choice) {
 				case 1:
+					ProjectList.intialise();
+					RequestList.intialise();
+					StudentList.initialise();
+					SupervisorList.initialise();
+					CoordinatorList.initalise();
+					
 					Login.login();
+					
+					OutputStudentCSV.writeCSV(StudentList.getStudentList());
+					OutputSupervisorCSV.writeCSV(SupervisorList.getSupervisorList());
+					OutputCoordinatorCSV.writeCSV(CoordinatorList.getCoordinatorList());
+					OutputProjectCSV.writeCSV(ProjectList.getProjectList());
+					OutputRequestCSV.writeCSV(RequestList.getRequestList());
 					break;
 				case 2:
 					System.out.println("Quiting...");
@@ -44,12 +56,6 @@ public class StartingDisplay {
 					System.out.println();
 					break;
 			}
-			
-			OutputStudentCSV.writeCSV(StudentList.getStudentList());
-			OutputSupervisorCSV.writeCSV(SupervisorList.getSupervisorList());
-			OutputCoordinatorCSV.writeCSV(CoordinatorList.getCoordinatorList());
-			OutputProjectCSV.writeCSV(ProjectList.getProjectList());
-			OutputRequestCSV.writeCSV(RequestList.getRequestList());
 		}
 	}
 }

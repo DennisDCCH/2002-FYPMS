@@ -17,6 +17,6 @@ public class DeregisterFYPRequest extends Request{
 		System.out.println("Request Type: " + type);
 		System.out.println("Request Status: " + status);
 		System.out.println("Requet to deregister from project ID " + projectID + "\n");
-		System.out.println();
+
 	}
 }

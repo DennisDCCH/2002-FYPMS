@@ -16,6 +16,5 @@ public class RegisterFYPRequest extends Request{
 		System.out.println("Request Type: " + type);
 		System.out.println("Request Status: " + status);
 		System.out.println("Request to register for project ID " + projectID + "\n");
-		System.out.println();
 	}
 }

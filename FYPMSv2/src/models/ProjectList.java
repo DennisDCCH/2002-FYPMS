@@ -8,8 +8,11 @@ import ioclass.ReadProjectCSV;
 
 
 public class ProjectList {
-	private static List<Project> projectList = ReadProjectCSV.readCSV();
+	private static List<Project> projectList;
 	
+	public static void intialise() {
+		projectList = ReadProjectCSV.readCSV();
+	}
 	public static void addProject(Project p) {
 		projectList.add(p);
 	}
@@ -32,6 +35,24 @@ public class ProjectList {
 				newList.add(p);
 		}
 		return newList;
+	}
+	
+	public static Project getSpecificProject(int projectID) {
+		for(Project p: projectList) {
+			if(p.getProjectID() == projectID)
+				return p;
+		}
+		return null;
+	}
+	
+	public static Project getSpecificAvailableProject(int projectID) {
+		for(Project p: projectList) {
+			if(p.getProjectID() == projectID) {
+				if(p.getStatus() == ProjectStatus.AVAILABLE)
+					return p;
+			}
+		}
+		return null;
 	}
 
 	//Getter Setter

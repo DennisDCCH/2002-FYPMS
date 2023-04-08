@@ -11,26 +11,34 @@ public class RequestProcess {
 			r.setStatus(RequestStatus.APPROVED);
 			switch(r.getType()) {
 				case CHANGE_TITLE:
+					ProcessChangeTitleRequest.manageRequest(r);
 					break;
 					
 				case DEREGISTER_FYP:
+					ProcessDeregisterFYPRequest.manageRequest(r);
 					break;
 					
 				case REGISTER_FYP:
+					ProcessRegisterFYPRequest.manageRequest(r);
 					break;
 					
 				case TRANSFER_STUDENT:
+					ProcessTransferStudentRequest.manageRequest(r);
 					break;
 			}
+			System.out.println("The request have been accepted!");
+			System.out.println("Returning back to the request menu...\n");
 		}
 		else {
 			r.setStatus(RequestStatus.REJECTED);
+			System.out.println("The request have been rejected!");
+			System.out.println("Returning back to the request menu...\n");
 		}
 
 	}
 	
 	
-	public static boolean handleRequest() {
+	private static boolean handleRequest() {
 		Scanner sc = new Scanner(System.in);
 		while(true) {
 			System.out.println("======================");

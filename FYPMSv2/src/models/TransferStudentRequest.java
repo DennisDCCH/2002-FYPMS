@@ -9,7 +9,6 @@ public class TransferStudentRequest extends Request{
 		super(requestID, requesterName, responderName, projectID, RequestType.TRANSFER_STUDENT, status, additionalInfo);
 	}
 
-	@Override
 	public void printRequestDetails() {
 		System.out.println("Request ID: " + requestID);
 		System.out.println("Requester Name: " + requesterName);
@@ -17,6 +16,5 @@ public class TransferStudentRequest extends Request{
 		System.out.println("Request Type: " + type);
 		System.out.println("Request Status: " + status);
 		System.out.println("Request to transfer project ID " + projectID + " to " + additionalInfo + "\n");
-		System.out.println();
 	}
 }

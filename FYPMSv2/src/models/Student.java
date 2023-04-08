@@ -15,8 +15,19 @@ public class Student extends User {
 	}
 	
 	private boolean initialSetHaveProject() {
-		for(Project p: super.projectList)
+		if(super.projectList.size() == 0)
+			return false;
+		else 
 			return true;
-		return false;
+	}
+
+	public void setHaveProject(boolean haveProject) {
+		this.haveProject = haveProject;
+	}
+	
+	public Project getProject() {
+		for(Project p: projectList)
+			return p;
+		return null;	
 	}
 }

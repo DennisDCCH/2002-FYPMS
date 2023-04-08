@@ -7,7 +7,7 @@ import java.util.List;
 import models.Coordinator;
 
 public class OutputCoordinatorCSV {
-	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\supervisor.csv";
+	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\coordinator.csv";
 	
 	public static void writeCSV(List<Coordinator> coordinators) {
 		File oldFile = new File(filePath);
