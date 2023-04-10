@@ -29,8 +29,6 @@ public class RegisterFYPRequest extends Request{
 			super.setStatus(RequestStatus.REJECTED);
 			System.out.println("The request have been rejected!");
 			System.out.println("Returning back to the request menu...\n");
-		}
-		
-		
+		}	
 	}
 }

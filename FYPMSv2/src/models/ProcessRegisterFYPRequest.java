@@ -18,7 +18,7 @@ public class ProcessRegisterFYPRequest {
 		ProjectList.getSpecificProject(projectID).setStatus(ProjectStatus.ALLOCATED);
 		// ProjectList.getSpecificProject(r.getProjectID()).setStatus(ProjectStatus.ALLOCATED);
 		
-		//Update status of supervisor projectlist
+		//Update status of supervisor project list
 		SupervisorList.getSpecificSupervisor(ProjectList.getSpecificProject(projectID).getSupervisorName()).checkAndSetProjectStatus();
 		// SupervisorList.getSpecificSupervisor(ProjectList.getSpecificProject(r.getProjectID()).getSupervisorName()).checkAndSetProjectStatus();		
 	}

@@ -5,6 +5,11 @@ public class MainApp {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
+		System.out.println("Enter: ");
+		String title = sc.next();
+		System.out.println(title);
+		
+		
 		StudentList stu = new StudentList();
 		SupervisorList sup = new SupervisorList();
 		CoordinatorList coord = new CoordinatorList();

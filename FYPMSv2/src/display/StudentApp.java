@@ -25,11 +25,19 @@ public class StudentApp {
 				mainDisplay(student);
 				System.out.println("Enter your choice: ");
 				choice = sc.nextInt();
+				sc.nextLine();
 				switch(choice) {
 					// Change Password
 					case 1:
-						System.out.println("Enter new password: ");
-						String password = sc.next();
+						String password;
+						while(true) {
+							System.out.println("Enter new password: ");
+							password = sc.nextLine();
+							if(password.contains(",")) 
+								System.out.println("Password cannot contain commas (,)");
+							else
+								break;
+						}
 						student.setPassword(password);
 						System.out.println("Password changed\n");
 						break;
@@ -49,12 +57,19 @@ public class StudentApp {
 						
 					// Request to Change Project Title
 					case 4:
-						System.out.println("Enter the new project title");
-						String title = sc.next();
+						String title;
+						while(true) {
+							System.out.println("Enter the new project title: ");
+							title = sc.nextLine();
+							if(title.contains(",")) 
+								System.out.println("The project title cannot contain commas (,)");
+							else
+								break;
+						}
 						Request changeTitleRequest = new ChangeTitleRequest(RequestList.getNextRequestID(), student.getUserName(), student.getProject().getSupervisorName(),
 								student.getProject().getProjectID(), RequestStatus.PENDING, title);
 						
-						//Appened request to overall requestList and student requestList
+						//Append request to overall requestList and student requestList
 						student.addRequest(changeTitleRequest);
 						RequestList.addRequest(changeTitleRequest);
 						
@@ -66,7 +81,7 @@ public class StudentApp {
 						Request deregisterRequest = new DeregisterFYPRequest(RequestList.getNextRequestID(), student.getUserName(), "Li Fang", student.getProject().getProjectID(),
 								RequestStatus.PENDING, null);
 						
-						//Appened request to overall requestList and student requestList
+						//Append request to overall requestList and student requestList
 						student.addRequest(deregisterRequest);
 						RequestList.addRequest(deregisterRequest);
 						

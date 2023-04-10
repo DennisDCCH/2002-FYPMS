@@ -21,11 +21,19 @@ public class SupervisorApp {
 		do {
 			mainDisplay(supervisor);
 			choice = sc.nextInt();
+			sc.nextLine();
 			switch(choice) {
 				// Change Password
 				case 1:
-					System.out.println("Enter new password: ");
-					String password = sc.next();
+					String password;
+					while(true) {
+						System.out.println("Enter new password: ");
+						password = sc.nextLine();
+						if(password.contains(",")) 
+							System.out.println("Password cannot contain commas (,)");
+						else
+							break;
+					}
 					supervisor.setPassword(password);
 					System.out.println("Password changed\n");
 					break;
@@ -136,11 +144,20 @@ public class SupervisorApp {
 			System.out.println("========================================");
 			System.out.println("Enter your choice: ");
 			option = sc.nextInt();
+			sc.nextLine();
 			switch(option) {
 				// Create Projects
 				case 1:
-					System.out.println("Enter Project Title: ");
-					String projectTitle = sc.next();
+					String projectTitle;
+					while(true) {
+						System.out.println("Enter Project Title: ");
+						projectTitle = sc.nextLine();
+						if(projectTitle.contains(",")) 
+							System.out.println("Title cannot contain commas (,)");
+						else
+							break;
+					}
+					
 					Project p = new Project(ProjectList.getNextProjectID(), supervisor.getUserName(), null, projectTitle, ProjectStatus.AVAILABLE);
 					
 					// Adding to supervisor list of projects
@@ -155,12 +172,20 @@ public class SupervisorApp {
 					
 				// Update Projects
 				case 2:
+					String title;
 					supervisor.printMyProjects();
 					System.out.println("Enter the Project ID to update");
 					int id = sc.nextInt();
+					sc.nextLine();
 					if(supervisor.getProject(id) != null) {
-						System.out.println("Enter the new project title: ");
-						String title = sc.next();
+						while(true) {
+							System.out.println("Enter the new project title: ");
+							title = sc.nextLine();
+							if(title.contains(",")) 
+								System.out.println("Title cannot contain commas (,)");
+							else
+								break;
+						}
 						supervisor.getProject(id).setProjectTitle(title);
 						System.out.println("Your project have been updated!");
 					}
