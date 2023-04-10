@@ -8,7 +8,6 @@ import models.Project;
 import models.ProjectList;
 import models.Request;
 import models.RequestList;
-import models.RequestProcess;
 import models.Supervisor;
 import models.SupervisorList;
 import models.TransferStudentRequest;
@@ -204,7 +203,7 @@ public class SupervisorApp {
 						System.out.println("Enter the request ID to process: ");
 						int id = sc.nextInt();
 						if(supervisor.getRequest(id) != null) {
-							RequestProcess.process(supervisor.getRequest(id));
+							supervisor.getRequest(id).processRequest();
 						}
 						else {
 							System.out.println("You have entered a invalid request ID!");

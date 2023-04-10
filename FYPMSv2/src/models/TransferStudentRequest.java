@@ -17,4 +17,18 @@ public class TransferStudentRequest extends Request{
 		System.out.println("Request Status: " + status);
 		System.out.println("Request to transfer project ID " + projectID + " to " + additionalInfo + "\n");
 	}
+	
+	public void processRequest() {
+		if(super.handleRequest()) {
+			super.setStatus(RequestStatus.APPROVED);
+			ProcessTransferStudentRequest.manageRequest(requesterName, projectID, additionalInfo);
+			System.out.println("The request have been accepted!");
+			System.out.println("Returning back to the request menu...\n");
+		}
+		else {
+			super.setStatus(RequestStatus.REJECTED);
+			System.out.println("The request have been rejected!");
+			System.out.println("Returning back to the request menu...\n");
+		}	
+	}
 }

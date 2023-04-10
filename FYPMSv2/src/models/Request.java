@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Scanner;
+
 import enumclass.RequestStatus;
 import enumclass.RequestType;
 
@@ -25,6 +27,30 @@ public abstract class Request {
 	}
 	
 	public abstract void printRequestDetails();
+	
+	public abstract void processRequest();
+	
+	protected boolean handleRequest() {
+		Scanner sc = new Scanner(System.in);
+		while(true) {
+			System.out.println("======================");
+			System.out.println("|1. Approve          |");
+			System.out.println("|2. Reject           |");
+			System.out.println("======================");
+			int choice = sc.nextInt();
+			switch(choice) {
+				case 1:
+					return true;
+					
+				case 2:
+					return false;
+					
+				default:
+					System.out.println("Please choose a valid option\n");
+					break;
+			}
+		}
+	}
 
 	public int getRequestID() {
 		return requestID;

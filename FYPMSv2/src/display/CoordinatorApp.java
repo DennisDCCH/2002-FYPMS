@@ -10,7 +10,6 @@ import models.Project;
 import models.ProjectList;
 import models.Request;
 import models.RequestList;
-import models.RequestProcess;
 import models.SupervisorList;
 import models.TransferStudentRequest;
 
@@ -293,7 +292,7 @@ public class CoordinatorApp {
 						System.out.println("Enter the request ID to process: ");
 						int id = sc.nextInt();
 						if(coordinator.getRequest(id) != null) {
-							RequestProcess.process(coordinator.getRequest(id));
+							coordinator.getRequest(id).processRequest();
 						}
 						else {
 							System.out.println("You have entered a invalid request ID!");

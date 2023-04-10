@@ -4,19 +4,23 @@ import enumclass.ProjectStatus;
 
 public class ProcessDeregisterFYPRequest {
 
-	public static void manageRequest(Request r) {
-		// r request id, requester name, responder name, project id, additonal info
+	public static void manageRequest(String requesterName, int projectID) {
+		// r request id, requester name, responder name, project id, additional info
 		
-		//Remove project from student projectlist
-		StudentList.getSpecificStudent(r.getRequesterName()).removeProject(ProjectList.getSpecificProject(r.getProjectID()));
+		//Remove project from student project list
+		//StudentList.getSpecificStudent(requesterName).removeProject(ProjectList.getSpecificProject(projectID));
+		//StudentList.getSpecificStudent(r.getRequesterName()).removeProject(ProjectList.getSpecificProject(r.getProjectID()));
 		
 		// Remove student name from project
-		ProjectList.getSpecificProject(r.getProjectID()).removeStudent();;
+		ProjectList.getSpecificProject(projectID).removeStudent();
+		//ProjectList.getSpecificProject(r.getProjectID()).removeStudent();;
 		
 		// Set project status
-		ProjectList.getSpecificProject(r.getProjectID()).setStatus(ProjectStatus.AVAILABLE);
+		ProjectList.getSpecificProject(projectID).setStatus(ProjectStatus.AVAILABLE);
+		//ProjectList.getSpecificProject(r.getProjectID()).setStatus(ProjectStatus.AVAILABLE);
 		
-		//Update status of supervisor projectlist
-		SupervisorList.getSpecificSupervisor(ProjectList.getSpecificProject(r.getProjectID()).getSupervisorName()).checkAndSetProjectStatus();
+		//Update status of supervisor project list
+		SupervisorList.getSpecificSupervisor(ProjectList.getSpecificProject(projectID).getSupervisorName()).checkAndSetProjectStatus();
+		//SupervisorList.getSpecificSupervisor(ProjectList.getSpecificProject(r.getProjectID()).getSupervisorName()).checkAndSetProjectStatus();
 	}
 }
