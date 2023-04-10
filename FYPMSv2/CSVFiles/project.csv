@@ -1,11 +1,11 @@
-Project ID, Supervisor Name,Supervisor Email, Student Name,Student Email, Project Title, Project Status
+Project ID, Supervisor Name, Supervisor Email, Student Name, Student Email, Project Title, Project Status
 1,A S Madhukumar,ASMADHUKUMAR@NTU.EDU.SG,null,null,Machine Learning-based Interference Mitigation in a Multi-tier Networks,AVAILABLE
 2,A S Madhukumar,ASMADHUKUMAR@NTU.EDU.SG,null,null,Deep Learning-Driven Edge Caching for 5G-and-Beyond Industrial IoT Networks,AVAILABLE
 3,Alexei Sourin,ASSOURIN@ntu.edu.sg,null,null,Sonification of geometry 1,AVAILABLE
 4,Arvind Easwaran,ARVINDE@NTU.EDU.SG,null,null,Edge/Cloud Resource Management for Time-Sensitive Applications (2),AVAILABLE
-5,Bo An,BOAN@NTU.EDU.SG,null,null,Deep Reinforcement Learning for Complex Environment,AVAILABLE
-6,Bo An,BOAN@NTU.EDU.SG,null,null,Build Software Agents for Power Trading Agent Competition,AVAILABLE
-7,Bo An,BOAN@NTU.EDU.SG,null,null,Designing Negotiation Agents to Parcitipate in International Competition,AVAILABLE
+5,Bo An,BOAN@NTU.EDU.SG,null,null,Deep Reinforcement Learning for Complex Environment,RESERVED
+6,Bo An,BOAN@NTU.EDU.SG,null,null,Build Software Agents for Power Trading Agent Competition,RESERVED
+7,Bo An,BOAN@NTU.EDU.SG,null,null,Designing Negotiation Agents to Parcitipate in International Competition,UNAVAILABLE
 8,Cai Wentong,ASWTCAI@ntu.edu.sg,null,null,Creation of Meta-model for Agent-based Simulation Using Machine Learning Approach,AVAILABLE
 9,Chen Change Loy,CCLOY@NTU.EDU.SG,null,null,Encoding Images to Text Prompts with CLIP,AVAILABLE
 10,Chia Liang Tien,ASLTCHIA@ntu.edu.sg,null,null,Smart Monitor for Studio Photographer,AVAILABLE

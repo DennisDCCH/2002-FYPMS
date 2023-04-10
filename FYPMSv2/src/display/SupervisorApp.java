@@ -49,7 +49,6 @@ public class SupervisorApp {
 					break;
 				
 				// Request to transfer Student
-					//Cannot transfer to coordinator... 
 				case 4:
 					int projectID;
 					String userID;

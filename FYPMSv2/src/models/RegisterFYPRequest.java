@@ -21,7 +21,7 @@ public class RegisterFYPRequest extends Request{
 	public void processRequest() {
 		if(super.handleRequest()) {
 			super.setStatus(RequestStatus.APPROVED);
-			ProcessRegisterFYPRequest.manageRequest(projectID, requesterName);
+			ProcessRegisterFYPRequest.manageRequest(projectID, requesterName, additionalInfo);
 			System.out.println("The request have been accepted!");
 			System.out.println("Returning back to the request menu...\n");
 		}

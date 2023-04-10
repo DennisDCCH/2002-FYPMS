@@ -16,6 +16,9 @@ public class ProcessTransferStudentRequest {
 		ProjectList.getSpecificProject(projectID).setSupervisorName(SupervisorList.getSpecificSupervisorID(additionalInfo).getUserName());
 		// ProjectList.getSpecificProject(r.getProjectID()).setSupervisorName(SupervisorList.getSpecificSupervisorID(r.getAdditionalInfo()).getUserName());
 		
+		// Set new supervisor email to project
+		ProjectList.getSpecificProject(projectID).setSupervisorEmail(SupervisorList.getSpecificSupervisorID(additionalInfo).getEmail());
+		
 		// Add project to new supervisor projectList
 		SupervisorList.getSpecificSupervisorID(additionalInfo).addProject(ProjectList.getSpecificProject(projectID));
 		// SupervisorList.getSpecificSupervisorID(r.getAdditionalInfo()).addProject(ProjectList.getSpecificProject(r.getProjectID()));

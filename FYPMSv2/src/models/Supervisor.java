@@ -78,6 +78,16 @@ public class Supervisor extends User{
 		return null;
 	}
 	
+	public Project getAllocatedProject(int projectID) {
+		for(Project p: projectList) {
+			if(p.getProjectID() == projectID) {
+				if(p.getStatus() == ProjectStatus.ALLOCATED)
+					return p;
+			}
+		}
+		return null;
+	}
+	
 	public List<Project> getProjectList() {
 		return projectList;
 	}

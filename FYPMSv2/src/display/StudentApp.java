@@ -15,6 +15,7 @@ import models.Request;
 import models.RequestList;
 import models.Student;
 import models.StudentList;
+import models.SupervisorList;
 
 public class StudentApp {
 	
@@ -156,12 +157,15 @@ public class StudentApp {
 						
 						if(ProjectList.getSpecificAvailableProject(id) != null) {
 							ProjectList.getSpecificAvailableProject(id).setStatus(ProjectStatus.RESERVED);
-							Request registerRequest = new RegisterFYPRequest(RequestList.getNextRequestID(), student.getUserName(), "Li Fang", id, RequestStatus.PENDING, null);
+							Request registerRequest = new RegisterFYPRequest(RequestList.getNextRequestID(), student.getUserName(), "Li Fang", 
+									id, RequestStatus.PENDING, student.getEmail());
 						
 							//Append request to overall requestList and student requestList
 							student.addRequest(registerRequest);
 							RequestList.addRequest(registerRequest);
 							
+							//Update the project supervisor project list status
+							SupervisorList.getSpecificSupervisor(ProjectList.getSpecificProject(id).getSupervisorName()).checkAndSetProjectStatus();
 							System.out.println("The request have been send out.\n");
 						}
 						else {
