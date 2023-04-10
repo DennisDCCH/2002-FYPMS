@@ -111,7 +111,8 @@ public class CoordinatorApp {
 							break;
 					}
 					
-					Project p = new Project(ProjectList.getNextProjectID(), coordinator.getUserName(), null, projectTitle, ProjectStatus.AVAILABLE);
+					Project p = new Project(ProjectList.getNextProjectID(), coordinator.getUserName(), coordinator.getEmail(), 
+							null, null, projectTitle, ProjectStatus.AVAILABLE);
 					
 					// Adding to supervisor list of projects
 					coordinator.addProject(p);

@@ -2,23 +2,23 @@ package models;
 
 public class Student extends User {
 	private boolean haveProject;
+	private int deregisteredFYP;
+	private Project project;
 	
 	//Constructor
-	public Student(String userName, String email, String password) {
+	public Student(String userName, String email, String password, int deregisteredFYP) {
 		super(userName, email, password);
+		this.deregisteredFYP = deregisteredFYP;
+		project = ProjectList.getStudentProject(userName);
 		
-		haveProject = initialSetHaveProject();
+		if(project == null)
+			haveProject = false;
+		else 
+			haveProject = true;
 	}
 	
 	public boolean isHaveProject() {
 		return haveProject;
-	}
-	
-	private boolean initialSetHaveProject() {
-		if(super.projectList.size() == 0)
-			return false;
-		else 
-			return true;
 	}
 
 	public void setHaveProject(boolean haveProject) {
@@ -26,8 +26,18 @@ public class Student extends User {
 	}
 	
 	public Project getProject() {
-		for(Project p: projectList)
-			return p;
-		return null;	
+			return project;	
+	}
+
+	public int getDeregisteredFYP() {
+		return deregisteredFYP;
+	}
+
+	public void setDeregisteredFYP(int deregisteredFYP) {
+		this.deregisteredFYP = deregisteredFYP;
+	}
+	
+	public void printMyProjects() {
+		project.printProjectDetails();
 	}
 }

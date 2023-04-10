@@ -1,31 +1,31 @@
 package models;
 
+import java.util.List;
+
 import enumclass.ProjectStatus;
 
 public class Supervisor extends User{
 	private int supervisingProjectCount;
+	protected List<Project> projectList;
+	
 	//Constructor
 	public Supervisor(String userName, String email, String password) {
 		super(userName, email, password);
+		
+		projectList = ProjectList.getUserSpecificProjectList(userName);
 		supervisingProjectCount = checkNumSupervisingProject();
 		checkAndSetProjectStatus();
 	}
 	
-	public void createNewProject(int id, String projectTitle) {
-		Project p = new Project(id, super.userName, null, projectTitle, ProjectStatus.AVAILABLE );
-		//Add p to user list of project
-		super.projectList.add(p);
-	}
-	
 	public void checkAndSetProjectStatus() {
 		int count = 0;
-		for(Project p: super.projectList) {
+		for(Project p: projectList) {
 			if(p.getStatus() == ProjectStatus.ALLOCATED || p.getStatus() == ProjectStatus.RESERVED)
 				count++;
 			if(count == 2)
 				break;
 		}
-		for(Project p: super.projectList) {
+		for(Project p: projectList) {
 			if(count == 2) {
 				if(p.getStatus() == ProjectStatus.AVAILABLE)
 					p.setStatus(ProjectStatus.UNAVAILABLE);
@@ -39,7 +39,7 @@ public class Supervisor extends User{
 	
 	public int checkNumSupervisingProject() {
 		int count = 0;
-		for(Project p: super.projectList) {
+		for(Project p: projectList) {
 			if(p.getStatus() == ProjectStatus.ALLOCATED || p.getStatus() == ProjectStatus.RESERVED)
 				count++;
 		}
@@ -51,9 +51,34 @@ public class Supervisor extends User{
 	}
 	
 	public void printAllocatedProjects() {
-		for(Project p: super.projectList) {
+		for(Project p: projectList) {
 			if(p.getStatus() == ProjectStatus.ALLOCATED)
 				p.printProjectDetails();
 		}
+	}
+	
+	public void printMyProjects() {
+		for(Project p: projectList)
+			p.printProjectDetails();
+	}
+	
+	public void addProject(Project p) {
+		projectList.add(p);
+	}
+	
+	public void removeProject(Project p) {
+		projectList.remove(p);
+	}
+	
+	public Project getProject(int projectID) {
+		for(Project p: projectList) {
+			if(p.getProjectID() == projectID)
+				return p;
+		}
+		return null;
+	}
+	
+	public List<Project> getProjectList() {
+		return projectList;
 	}
 }

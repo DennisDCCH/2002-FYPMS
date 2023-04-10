@@ -25,7 +25,7 @@ public class ReadStudentCSV {
 				 String[] fields = line.split(",");
 				 
 				 if(fields.length > 0) {
-					 Student s = new Student(fields[0], fields[1], fields[2]); 
+					 Student s = new Student(fields[0], fields[1], fields[2], Integer.valueOf(fields[3])); 
 					 studentList.add(s);
 				 }
 			}

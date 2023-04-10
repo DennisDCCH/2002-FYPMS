@@ -25,7 +25,7 @@ public class ReadProjectCSV {
 				 String[] fields = line.split(",");
 				 
 				 if(fields.length > 0) {
-					 Project s = new Project(Integer.valueOf(fields[0]), fields[1], fields[2], fields[3], ProjectStatus.valueOf(fields[4])); 
+					 Project s = new Project(Integer.valueOf(fields[0]), fields[1], fields[2], fields[3], fields[4], fields[5], ProjectStatus.valueOf(fields[6])); 
 					 projectList.add(s);
 				 }
 			}

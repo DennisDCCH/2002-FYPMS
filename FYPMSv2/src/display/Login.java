@@ -28,9 +28,15 @@ public class Login {
 			
 			if(student != null) {
 				if(student.getPassword().equals(password)) {
-					System.out.println("Login successfully!");
-					StudentApp.display(student);
-					return;
+					if(student.getDeregisteredFYP() == 1) {
+						System.out.println("You have been deregistered from FYP and can no longer login!");
+						return;
+					}
+					else {
+						System.out.println("Login successfully!");
+						StudentApp.display(student);
+						return;
+					}
 				}
 				else {
 					System.out.println("You have entered the wrong PASSWORD!");

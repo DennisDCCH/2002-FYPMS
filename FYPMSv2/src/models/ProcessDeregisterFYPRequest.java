@@ -15,6 +15,9 @@ public class ProcessDeregisterFYPRequest {
 		ProjectList.getSpecificProject(projectID).removeStudent();
 		//ProjectList.getSpecificProject(r.getProjectID()).removeStudent();;
 		
+		// Update that student have been deregistered from FYP
+		StudentList.getSpecificStudent(requesterName).setDeregisteredFYP(1);
+		
 		// Set project status
 		ProjectList.getSpecificProject(projectID).setStatus(ProjectStatus.AVAILABLE);
 		//ProjectList.getSpecificProject(r.getProjectID()).setStatus(ProjectStatus.AVAILABLE);

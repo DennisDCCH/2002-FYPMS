@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import enumclass.ProjectStatus;
 import enumclass.RequestStatus;
+import enumclass.RequestType;
 import ioclass.OutputStudentCSV;
 import models.ChangeTitleRequest;
 import models.DeregisterFYPRequest;
@@ -78,14 +79,26 @@ public class StudentApp {
 						
 					// Request to Deregister FYP
 					case 5:
-						Request deregisterRequest = new DeregisterFYPRequest(RequestList.getNextRequestID(), student.getUserName(), "Li Fang", student.getProject().getProjectID(),
-								RequestStatus.PENDING, null);
+						boolean bool = true;
+						for(Request r: student.getRequestList()) {
+							if(r.getStatus() == RequestStatus.PENDING) {
+								if(r.getType() == RequestType.DEREGISTER_FYP)
+									bool = false;
+							}
+						}
 						
-						//Append request to overall requestList and student requestList
-						student.addRequest(deregisterRequest);
-						RequestList.addRequest(deregisterRequest);
-						
-						System.out.println("The request have been send out.\n");
+						if(bool) {
+							Request deregisterRequest = new DeregisterFYPRequest(RequestList.getNextRequestID(), student.getUserName(), "Li Fang", student.getProject().getProjectID(),
+									RequestStatus.PENDING, null);
+							
+							//Append request to overall requestList and student requestList
+							student.addRequest(deregisterRequest);
+							RequestList.addRequest(deregisterRequest);
+							
+							System.out.println("The request have been send out.\n");
+						}
+						else 
+							System.out.println("You have already requested to deregistered from FYP, please wait for approval!");
 						break;
 						
 					// Logout
@@ -128,24 +141,36 @@ public class StudentApp {
 					
 				// Request to Register FYP
 				case 4:
-					PrintProjectList.printStatusSpecificProjects(ProjectStatus.AVAILABLE);
-					System.out.println("Enter the project ID to register for: ");
-					int id = sc.nextInt();
+					boolean bool = true;
+					for(Request r: student.getRequestList()) {
+						if(r.getStatus() == RequestStatus.PENDING) {
+							if(r.getType() == RequestType.REGISTER_FYP)
+								bool = false;
+						}
+					}
 					
-					if(ProjectList.getSpecificAvailableProject(id) != null) {
-						ProjectList.getSpecificAvailableProject(id).setStatus(ProjectStatus.RESERVED);
-						Request registerRequest = new RegisterFYPRequest(RequestList.getNextRequestID(), student.getUserName(), "Li Fang", id, RequestStatus.PENDING, null);
-					
-						//Appened request to overall requestList and student requestList
-						student.addRequest(registerRequest);
-						RequestList.addRequest(registerRequest);
+					if(bool) {
+						PrintProjectList.printStatusSpecificProjects(ProjectStatus.AVAILABLE);
+						System.out.println("Enter the project ID to register for: ");
+						int id = sc.nextInt();
 						
-						System.out.println("The request have been send out.\n");
+						if(ProjectList.getSpecificAvailableProject(id) != null) {
+							ProjectList.getSpecificAvailableProject(id).setStatus(ProjectStatus.RESERVED);
+							Request registerRequest = new RegisterFYPRequest(RequestList.getNextRequestID(), student.getUserName(), "Li Fang", id, RequestStatus.PENDING, null);
+						
+							//Append request to overall requestList and student requestList
+							student.addRequest(registerRequest);
+							RequestList.addRequest(registerRequest);
+							
+							System.out.println("The request have been send out.\n");
+						}
+						else {
+							System.out.println("You have entered a invalid project ID!");
+							System.out.println("Returning back to main menu...\n");
+						}
 					}
-					else {
-						System.out.println("You have entered a invalid project ID!");
-						System.out.println("Returning back to main menu...\n");
-					}
+					else
+						System.out.println("You have already registered for a project, please wait for approval!");		
 					break;
 					
 				// Logout
@@ -173,7 +198,6 @@ public class StudentApp {
 			System.out.println("|5. Request to Deregister FYP          |");
 			System.out.println("|6. Logout                             |");
 			System.out.println("========================================");
-			
 		}
 		else{
 			// No Project
@@ -184,8 +208,6 @@ public class StudentApp {
 			System.out.println("|4. Request to Register FYP            |");
 			System.out.println("|5. Logout                             |");
 			System.out.println("========================================");
-		
-	
 		}
 	}
 }

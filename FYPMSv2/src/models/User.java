@@ -9,7 +9,6 @@ public class User {
 	protected String email;
 	protected String userID;
 	protected String password;
-	protected List<Project> projectList;
 	protected List<Request> requestList;
 	
 	//Constructor
@@ -20,14 +19,7 @@ public class User {
 		userID = parts[0];
 		this.password = password;
 		
-		projectList = ProjectList.getUserSpecificProjectList(userName);
 		requestList = RequestList.getUserSpecificRequestList(userName);
-	}
-	
-	public void printMyProjects() {
-		for(Project p: projectList)
-			p.printProjectDetails();
-		
 	}
 	
 	public void printMyRequest() {
@@ -44,14 +36,6 @@ public class User {
 		}
 	}
 	
-	public void addProject(Project p) {
-		projectList.add(p);
-	}
-	
-	public void removeProject(Project p) {
-		projectList.remove(p);
-	}
-	
 	public void addRequest(Request r) {
 		requestList.add(r);
 	}
@@ -64,14 +48,6 @@ public class User {
 			}
 		}
 		return false;
-	}
-	
-	public Project getProject(int projectID) {
-		for(Project p: projectList) {
-			if(p.getProjectID() == projectID)
-				return p;
-		}
-		return null;
 	}
 	
 	public Request getRequest(int requestID) {
@@ -103,10 +79,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public List<Project> getProjectList() {
-		return projectList;
 	}
 
 	public List<Request> getRequestList() {

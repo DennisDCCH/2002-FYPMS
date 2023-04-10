@@ -54,6 +54,14 @@ public class ProjectList {
 		}
 		return null;
 	}
+	
+	public static Project getStudentProject(String userName) {
+		for(Project p: projectList) {
+			if(p.getStudentName().equals(userName))
+				return p;
+		}
+		return null;
+	}
 
 	//Getter Setter
 	public static List<Project> getProjectList() {

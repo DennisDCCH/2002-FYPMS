@@ -17,7 +17,7 @@ public class OutputStudentCSV {
 		try {
 			fileWriter = new FileWriter(filePath);
 			
-			fileWriter.append("Name, Email, Password");
+			fileWriter.append("Name, Email, Password, DeregisteredFYP");
 			fileWriter.append("\n");
 			for(Student s: students) {
 				fileWriter.append(s.getUserName());
@@ -25,6 +25,8 @@ public class OutputStudentCSV {
 				fileWriter.append(s.getEmail());
 				fileWriter.append(",");
 				fileWriter.append(s.getPassword());
+				fileWriter.append(",");
+				fileWriter.append(String.valueOf(s.getDeregisteredFYP()));
 				fileWriter.append("\n");
 			}
 		}catch(Exception ex) {

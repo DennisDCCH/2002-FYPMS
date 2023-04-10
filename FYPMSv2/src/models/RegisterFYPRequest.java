@@ -13,7 +13,7 @@ public class RegisterFYPRequest extends Request{
 		System.out.println("Request ID: " + requestID);
 		System.out.println("Requester Name: " + requesterName);
 		System.out.println("Responder Name: " + responderName);
-		System.out.println("Request Type: " + type);
+		System.out.println("Request Type: " + type);  
 		System.out.println("Request Status: " + status);
 		System.out.println("Request to register for project ID " + projectID + "\n");
 	}
@@ -27,6 +27,7 @@ public class RegisterFYPRequest extends Request{
 		}
 		else {
 			super.setStatus(RequestStatus.REJECTED);
+			ProcessRegisterFYPRequest.rejectRequest(projectID);
 			System.out.println("The request have been rejected!");
 			System.out.println("Returning back to the request menu...\n");
 		}	

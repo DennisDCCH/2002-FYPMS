@@ -22,4 +22,13 @@ public class ProcessRegisterFYPRequest {
 		SupervisorList.getSpecificSupervisor(ProjectList.getSpecificProject(projectID).getSupervisorName()).checkAndSetProjectStatus();
 		// SupervisorList.getSpecificSupervisor(ProjectList.getSpecificProject(r.getProjectID()).getSupervisorName()).checkAndSetProjectStatus();		
 	}
+	
+	public static void rejectRequest(int projectID) {
+		// Set project status
+		ProjectList.getSpecificProject(projectID).setStatus(ProjectStatus.AVAILABLE);
+		
+		// Update status of supervisor project list
+		SupervisorList.getSpecificSupervisor(ProjectList.getSpecificProject(projectID).getSupervisorName()).checkAndSetProjectStatus();
+		
+	}
 }

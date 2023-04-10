@@ -74,7 +74,7 @@ public class SupervisorApp {
 									//Make the new request
 									Request r = new TransferStudentRequest(RequestList.getNextRequestID(), supervisor.getUserName(), "Li Fang", projectID, RequestStatus.PENDING, userID);
 									
-									//Appened request to overall requestList and supervisor requestList
+									//Append request to overall requestList and supervisor requestList
 									supervisor.addRequest(r);
 									RequestList.addRequest(r);
 									
@@ -158,7 +158,8 @@ public class SupervisorApp {
 							break;
 					}
 					
-					Project p = new Project(ProjectList.getNextProjectID(), supervisor.getUserName(), null, projectTitle, ProjectStatus.AVAILABLE);
+					Project p = new Project(ProjectList.getNextProjectID(), supervisor.getUserName(), supervisor.getEmail(), 
+							null, null, projectTitle, ProjectStatus.AVAILABLE);
 					
 					// Adding to supervisor list of projects
 					supervisor.addProject(p);
