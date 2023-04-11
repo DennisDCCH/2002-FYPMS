@@ -59,28 +59,39 @@ public class StudentApp {
 						
 					// Request to Change Project Title
 					case 4:
-						String title;
-						while(true) {
-							System.out.println("Enter the new project title: ");
-							title = sc.nextLine();
-							if(title.contains(",")) 
-								System.out.println("The project title cannot contain commas (,)");
-							else
-								break;
+						boolean bool = true;
+						for(Request r: student.getRequestList()) {
+							if(r.getStatus() == RequestStatus.PENDING) {
+								if(r.getType() == RequestType.CHANGE_TITLE)
+									bool = false;
+							}
 						}
-						Request changeTitleRequest = new ChangeTitleRequest(RequestList.getNextRequestID(), student.getUserName(), student.getProject().getSupervisorName(),
-								student.getProject().getProjectID(), RequestStatus.PENDING, title);
-						
-						//Append request to overall requestList and student requestList
-						student.addRequest(changeTitleRequest);
-						RequestList.addRequest(changeTitleRequest);
-						
-						System.out.println("The request have been send out.\n");
+						if(bool) {
+							String title;
+							while(true) {
+								System.out.println("Enter the new project title: ");
+								title = sc.nextLine();
+								if(title.contains(",")) 
+									System.out.println("The project title cannot contain commas (,)");
+								else
+									break;
+							}
+							Request changeTitleRequest = new ChangeTitleRequest(RequestList.getNextRequestID(), student.getUserName(), student.getProject().getSupervisorName(),
+									student.getProject().getProjectID(), RequestStatus.PENDING, title);
+							
+							//Append request to overall requestList and student requestList
+							student.addRequest(changeTitleRequest);
+							RequestList.addRequest(changeTitleRequest);
+							
+							System.out.println("The request have been send out.\n");
+						}
+						else
+							System.out.println("You have already requested to change project title, please wait for approval!");
 						break;
 						
 					// Request to Deregister FYP
 					case 5:
-						boolean bool = true;
+						bool = true;
 						for(Request r: student.getRequestList()) {
 							if(r.getStatus() == RequestStatus.PENDING) {
 								if(r.getType() == RequestType.DEREGISTER_FYP)

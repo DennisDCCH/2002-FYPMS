@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import enumclass.ProjectStatus;
 import enumclass.RequestStatus;
+import enumclass.RequestType;
 import models.Project;
 import models.ProjectList;
 import models.Request;
@@ -50,6 +51,7 @@ public class SupervisorApp {
 				
 				// Request to transfer Student
 				case 4:
+					boolean bool = false;
 					int projectID;
 					String userID;
 					if(supervisor.getAllocatedProjectList().size() > 0) {
@@ -64,6 +66,19 @@ public class SupervisorApp {
 								System.out.println("You have entered a invalid project ID!");
 								System.out.println("Please try again!\n");
 							}
+						}
+						
+						for(Request r: supervisor.getRequestList()) {
+							if(r.getType() == RequestType.TRANSFER_STUDENT) {
+								if(r.getStatus() == RequestStatus.PENDING) {
+									if(r.getProjectID() == projectID)
+										bool = true;
+								}
+							}
+						}
+						if(bool) {
+							System.out.println("Project ID " + projectID + " is already waiting for approval for transfer!");
+							break;
 						}
 						while(true) {
 							System.out.println("Enter the new supervisor USERID");

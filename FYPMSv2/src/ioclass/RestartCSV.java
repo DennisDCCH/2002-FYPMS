@@ -24,7 +24,6 @@ public class RestartCSV {
 			try {
 				Files.copy(s, dest.resolve(src.relativize(s)), StandardCopyOption.REPLACE_EXISTING);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
 			});
