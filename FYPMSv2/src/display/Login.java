@@ -47,7 +47,7 @@ public class Login {
 			else if(coordinator != null) {
 				if(coordinator.getPassword().equals(password)) {
 					System.out.println("Login successfully!");
-					CoordinatorApp.display(coordinator);
+					CoordinatorApp.display(SupervisorList.getSpecificSupervisor(coordinator.getUserName()));
 					return;
 				}
 				else {

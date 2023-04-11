@@ -52,12 +52,12 @@ public class SupervisorApp {
 				case 4:
 					int projectID;
 					String userID;
-					if(supervisor.getProjectList().size() > 0) {
+					if(supervisor.getAllocatedProjectList().size() > 0) {
 						supervisor.printAllocatedProjects();
 						while(true) {
 							System.out.println("Enter the projectID that you want to transfer: ");
 							projectID = sc.nextInt();
-							if(supervisor.getProject(projectID) != null) {
+							if(supervisor.getAllocatedProject(projectID) != null) {
 								break;
 							}
 							else {
@@ -92,7 +92,7 @@ public class SupervisorApp {
 						}
 					}
 					else 
-						System.out.println("You have no projects currently");
+						System.out.println("You have no projects that is allocated currently");
 					break;
 					
 				// Logout
@@ -172,32 +172,39 @@ public class SupervisorApp {
 					
 				// Update Projects
 				case 2:
-					String title;
-					supervisor.printMyProjects();
-					System.out.println("Enter the Project ID to update");
-					int id = sc.nextInt();
-					sc.nextLine();
-					if(supervisor.getProject(id) != null) {
-						while(true) {
-							System.out.println("Enter the new project title: ");
-							title = sc.nextLine();
-							if(title.contains(",")) 
-								System.out.println("Title cannot contain commas (,)");
-							else
-								break;
+					if(supervisor.getProjectList().size() > 0) {
+						String title;
+						supervisor.printMyProjects();
+						System.out.println("Enter the Project ID to update");
+						int id = sc.nextInt();
+						sc.nextLine();
+						if(supervisor.getProject(id) != null) {
+							while(true) {
+								System.out.println("Enter the new project title: ");
+								title = sc.nextLine();
+								if(title.contains(",")) 
+									System.out.println("Title cannot contain commas (,)");
+								else
+									break;
+							}
+							supervisor.getProject(id).setProjectTitle(title);
+							System.out.println("Your project have been updated!");
 						}
-						supervisor.getProject(id).setProjectTitle(title);
-						System.out.println("Your project have been updated!");
+						else {
+							System.out.println("You have entered a invalid project ID!");
+							System.out.println("Returning back to main menu...\n");
+						}
 					}
-					else {
-						System.out.println("You have entered a invalid project ID!");
-						System.out.println("Returning back to main menu...\n");
-					}
+					else
+						System.out.println("You have no projects\n");
 					break;
 					
 				// View Projects
 				case 3:
-					supervisor.printMyProjects();
+					if(supervisor.getProjectList().size() > 0)
+						supervisor.printMyProjects();
+					else
+						System.out.println("You have no projects\n");
 					break;
 					
 				// Return

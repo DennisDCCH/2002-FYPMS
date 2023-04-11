@@ -10,12 +10,13 @@ import models.Project;
 import models.ProjectList;
 import models.Request;
 import models.RequestList;
+import models.Supervisor;
 import models.SupervisorList;
 import models.TransferStudentRequest;
 
 public class CoordinatorApp {
 	
-	public static void display(Coordinator coordinator) {
+	public static void display(Supervisor coordinator) {
 		Scanner sc = new Scanner(System.in);
 		
 		int choice = 0;
@@ -62,7 +63,7 @@ public class CoordinatorApp {
 		
 	}
 	
-	private static void mainDisplay(Coordinator coordinator) {
+	private static void mainDisplay(Supervisor coordinator) {
 		if(coordinator.pendingRequest()) {
 			System.out.println("========================================");
 			System.out.println("|1. Change Password                    |");
@@ -83,7 +84,7 @@ public class CoordinatorApp {
 		}
 	}
 	
-	private static void coordinatorProjectDisplay(Coordinator coordinator) {
+	private static void coordinatorProjectDisplay(Supervisor coordinator) {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
 		do {
@@ -124,39 +125,46 @@ public class CoordinatorApp {
 					
 				// Update Projects
 				case 2:
-					String title;
-					coordinator.printMyProjects();
-					System.out.println("Enter the Project ID to update");
-					int id = sc.nextInt();
-					sc.nextLine();
-					if(coordinator.getProject(id) != null) {
-						while(true) {
-							System.out.println("Enter the new project title: ");
-							title = sc.nextLine();
-							if(title.contains(",")) 
-								System.out.println("The project title cannot contain commas!");
-							else
-								break;
+					if(coordinator.getProjectList().size() > 0) {
+						String title;
+						coordinator.printMyProjects();
+						System.out.println("Enter the Project ID to update");
+						int id = sc.nextInt();
+						sc.nextLine();
+						if(coordinator.getProject(id) != null) {
+							while(true) {
+								System.out.println("Enter the new project title: ");
+								title = sc.nextLine();
+								if(title.contains(",")) 
+									System.out.println("The project title cannot contain commas!");
+								else
+									break;
+							}
+							coordinator.getProject(id).setProjectTitle(title);
+							System.out.println("Your project have been updated!");
 						}
-						coordinator.getProject(id).setProjectTitle(title);
-						System.out.println("Your project have been updated!");
+						else {
+							System.out.println("You have entered a invalid project ID!");
+							System.out.println("Returning back to main menu...\n");
+						}
 					}
-					else {
-						System.out.println("You have entered a invalid project ID!");
-						System.out.println("Returning back to main menu...\n");
-					}
+					else
+						System.out.println("You have no projects\n");
 					break;
 					
 				// View Projects
 				case 3:
-					coordinator.printMyProjects();
+					if(coordinator.getProjectList().size() > 0)
+						coordinator.printMyProjects();
+					else
+						System.out.println("You have no projects\n");
 					break;
 					
 					// Request to transfer Student
 				case 4:
 					int projectID;
 					String userID;
-					if(coordinator.getProjectList().size() > 0) {
+					if(coordinator.getAllocatedProjectList().size() > 0) {
 						coordinator.printAllocatedProjects();
 						while(true) {
 							System.out.println("Enter the projectID that you want to transfer: ");
@@ -196,7 +204,7 @@ public class CoordinatorApp {
 						}
 					}
 					else 
-						System.out.println("You have no projects currently\n");
+						System.out.println("You have no projects that is allocated currently\n");
 					break;
 				
 				// View System Projects
@@ -212,7 +220,7 @@ public class CoordinatorApp {
 					System.out.println("Please choose a valid option\n");
 					break;
 			}
-		}while(option != 5);
+		}while(option != 6);
 	}
 	
 	private static void systemProjectDisplay() {
@@ -303,7 +311,7 @@ public class CoordinatorApp {
 		}while(choice != 5);
 	}
 	
-	private static void coordinatorRequestDisplay(Coordinator coordinator) {
+	private static void coordinatorRequestDisplay(Supervisor coordinator) {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
 		boolean bool = true;
@@ -371,7 +379,7 @@ public class CoordinatorApp {
 		}while(bool);
 	}
 	
-	private static void requestDisplay(Coordinator coordinator) {
+	private static void requestDisplay(Supervisor coordinator) {
 		if(coordinator.pendingRequest()) {
 			System.out.println("========================================");
 			System.out.println("|1. Pending Request                    |");

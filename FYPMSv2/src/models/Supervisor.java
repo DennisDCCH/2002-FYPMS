@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import enumclass.ProjectStatus;
@@ -14,7 +15,6 @@ public class Supervisor extends User{
 		
 		projectList = ProjectList.getUserSpecificProjectList(userName);
 		supervisingProjectCount = checkNumSupervisingProject();
-		checkAndSetProjectStatus();
 	}
 	
 	public void checkAndSetProjectStatus() {
@@ -86,6 +86,15 @@ public class Supervisor extends User{
 			}
 		}
 		return null;
+	}
+	
+	public List<Project> getAllocatedProjectList(){
+		List<Project> newlist = new ArrayList<Project>();
+		for(Project p: projectList) {
+			if(p.getStatus() == ProjectStatus.ALLOCATED)
+				newlist.add(p);
+		}
+		return newlist;
 	}
 	
 	public List<Project> getProjectList() {
