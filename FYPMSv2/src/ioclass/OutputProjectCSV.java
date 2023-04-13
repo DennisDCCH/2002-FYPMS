@@ -6,9 +6,23 @@ import java.util.List;
 
 import models.Project;
 
+/**
+ * This class exports a new csv file based on the information attained from a list of projects
+ * @author Dennis Chen
+ * @version 1.0
+ *
+ */
 public class OutputProjectCSV {
+	/**
+	 * This stores the filePath to get to the project csv file
+	 */
 	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\project.csv";
 	
+	/**
+	 * This method deleted the old csv file in the filepath and makes a new one based on the information attained 
+	 * from a list of projects
+	 * @param projectList the information based on this list of projects that is to be saved in a csv file
+	 */
 	public static void writeCSV(List<Project> projectList) {
 		File oldFile = new File(filePath);
 		oldFile.delete();

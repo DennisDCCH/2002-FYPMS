@@ -18,7 +18,21 @@ import models.StudentList;
 import models.Supervisor;
 import models.SupervisorList;
 
+/**
+ * This class is the starting display of the FYP management system. Whenever the project is run, this is where the main
+ * function is located at 
+ * @author Dennis
+ * @version 1.0
+ *
+ */
 public class StartingDisplay {
+	
+	/**
+	 * This method is the starting screen of the FYP management system. Based on the option chosen, it will either 
+	 * move on to the login screen, or reset the entire system, or exit the program.
+	 * @param args an array of command line arguments for the application
+	 * @throws IOException if stream to file cannot be written to or closed.
+	 */
 	public static void main(String[] args) throws IOException {
 		
 		Scanner sc = new Scanner(System.in);

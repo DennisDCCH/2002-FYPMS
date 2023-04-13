@@ -13,8 +13,18 @@ import models.Supervisor;
 import models.SupervisorList;
 import models.TransferStudentRequest;
 
+/**
+ * This class is the supervisor menu for the FYP management system.
+ * @author Dennis Chen
+ * @version 1.0
+ *
+ */
 public class SupervisorApp {
 	
+	/**
+	 * This method have all the functions that a supervisor can access in the FYP management system.
+	 * @param supervisor this is the supervisor object that that is entered into the system after the user log in.
+	 */
 	public static void display(Supervisor supervisor) {
 		Scanner sc = new Scanner(System.in);
 		
@@ -123,6 +133,10 @@ public class SupervisorApp {
 		
 	}
 	
+	/**
+	 * This method prints out the supervisor main menu
+	 * @param supervisor this is the supervisor object that that is entered into the system after the user log in.
+	 */
 	private static void mainDisplay(Supervisor supervisor) {
 		if(supervisor.pendingRequest()) {
 			System.out.println("========================================");
@@ -146,6 +160,11 @@ public class SupervisorApp {
 		}
 	}
 	
+	/**
+	 * This method prints out the supervisor project menu. In the project menu, it will contain different functions
+	 * for the supervisor.
+	 * @param supervisor this is the supervisor object that that is entered into the system after the user log in.
+	 */
 	private static void supervisorProjectDisplay(Supervisor supervisor) {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
@@ -235,6 +254,10 @@ public class SupervisorApp {
 			
 	}
 	
+	/**
+	 * This method will contain different request functions for the supervisor.
+	 * @param supervisor this is the supervisor object that that is entered into the system after the user log in.
+	 */
 	private static void supervisorRequestDisplay(Supervisor supervisor) {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
@@ -303,6 +326,10 @@ public class SupervisorApp {
 		}while(bool);
 	}
 	
+	/**
+	 * This method will print the request menu for the supervisor
+	 * @param supervisor this is the supervisor object that that is entered into the system after the user log in.
+	 */
 	private static void requestDisplay(Supervisor supervisor) {
 		if(supervisor.pendingRequest()) {
 			System.out.println("========================================");

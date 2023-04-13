@@ -6,9 +6,23 @@ import java.util.List;
 
 import models.Supervisor;
 
+/**
+ * This class exports a new csv file based on the information attained from a list of supervisors
+ * @author Dennis Chen
+ * @version 1.0
+ *
+ */
 public class OutputSupervisorCSV {
+	/**
+	 * This stores the filePath to get to the supervisor csv file
+	 */
 	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\supervisor.csv";
 	
+	/**
+	 * This method deleted the old csv file in the filepath and makes a new one based on the information attained 
+	 * from a list of supervisors
+	 * @param supervisors the information based on this list of supervisors that is to be saved in a csv file
+	 */
 	public static void writeCSV(List<Supervisor> supervisors) {
 		File oldFile = new File(filePath);
 		oldFile.delete();

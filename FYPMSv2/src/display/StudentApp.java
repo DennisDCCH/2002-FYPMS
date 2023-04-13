@@ -17,8 +17,18 @@ import models.Student;
 import models.StudentList;
 import models.SupervisorList;
 
+/**
+ * This class is the student menu for the FYP management system.
+ * @author Dennis Chen
+ * @version 1.0
+ *
+ */
 public class StudentApp {
 	
+	/**
+	 * This method have all the functions that a student can access in the FYP management system.
+	 * @param student this is the student object that that is entered into the system after the user log in.
+	 */
 	public static void display(Student student) {
 		Scanner sc = new Scanner(System.in);
 		int choice = 0;
@@ -201,6 +211,10 @@ public class StudentApp {
 		}
 	}
 	
+	/**
+	 * This method prints the menu screen for the student
+	 * @param student this is the student object that that is entered into the system after the user log in.
+	 */
 	private static void mainDisplay(Student student)
 	{
 		if (student.isHaveProject()){

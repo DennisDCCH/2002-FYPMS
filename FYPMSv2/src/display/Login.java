@@ -10,8 +10,19 @@ import models.StudentList;
 import models.Supervisor;
 import models.SupervisorList;
 
+/**
+ * This class is the login screen of the FYP management system
+ * @author Dennis
+ * @version 1.0
+ *
+ */
 public class Login {
 	
+	/**
+	 * This method is the login screen of the FYP management system. It will ask for the user's id and password and 
+	 * check whether it is valid. If valid it will send this user to a menu depending on whether this user is a student,
+	 * supervisor or coordinator. 
+	 */
 	public static void login() {
 		Scanner sc = new Scanner(System.in);
 			

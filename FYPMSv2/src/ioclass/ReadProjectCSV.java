@@ -8,9 +8,23 @@ import java.util.List;
 import enumclass.ProjectStatus;
 import models.Project;
 
+/**
+ * This class reads from the data file and using the information in the data file make a list of project object
+ * @author Dennis Chen
+ * @version 1.0
+ *
+ */
 public class ReadProjectCSV {
+	/**
+	 * This stores the filePath to get to the project csv file
+	 */
 	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\project.csv";
 	
+	/**
+	 * This method reads from the csv file and it will make a project object based on the information stored in 
+	 * each row of the csv file. Each of this project object is appended into a list to make a list of projects
+	 * @return the list of projects that is made from the information in the csv file
+	 */
 	public static List<Project> readCSV() {
 		BufferedReader reader = null;
 		

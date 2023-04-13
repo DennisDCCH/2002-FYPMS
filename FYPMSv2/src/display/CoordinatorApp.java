@@ -14,8 +14,18 @@ import models.Supervisor;
 import models.SupervisorList;
 import models.TransferStudentRequest;
 
+/**
+ * This class is the coordinator menu for the FYP management system.
+ * @author Dennis Chen
+ * @version 1.0
+ *
+ */
 public class CoordinatorApp {
 	
+	/**
+	 * This method have all the functions that a coordinator can access in the FYP management system.
+	 * @param coordinator this is the supervisor object that that is entered into the system after the user log in.
+	 */
 	public static void display(Supervisor coordinator) {
 		Scanner sc = new Scanner(System.in);
 		
@@ -63,6 +73,10 @@ public class CoordinatorApp {
 		
 	}
 	
+	/**
+	 * This method prints out the coordinator main menu
+	 * @param coordinator this is the supervisor object that that is entered into the system after the user log in.
+	 */
 	private static void mainDisplay(Supervisor coordinator) {
 		if(coordinator.pendingRequest()) {
 			System.out.println("========================================");
@@ -84,6 +98,11 @@ public class CoordinatorApp {
 		}
 	}
 	
+	/**
+	 * This method prints out the coordinator project menu. In the project menu, it will contain different functions
+	 * for the coordinators.
+	 * @param coordinator this is the supervisor object that that is entered into the system after the user log in.
+	 */
 	private static void coordinatorProjectDisplay(Supervisor coordinator) {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
@@ -223,6 +242,10 @@ public class CoordinatorApp {
 		}while(option != 6);
 	}
 	
+	/**
+	 * This method prints out the coordinator system project menu. In the system project menu, it will contain 
+	 * different functions for the coordinator.
+	 */
 	private static void systemProjectDisplay() {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
@@ -270,6 +293,10 @@ public class CoordinatorApp {
 		}while(option != 4);
 	}
 	
+	/**
+	 * This method prints out the system project status menu whereby the coordinator will pick what status of projects 
+	 * in the system to view
+	 */
 	private static void systemProjectStatusDisplay() {
 		Scanner sc = new Scanner(System.in);
 		int choice = 0;
@@ -311,6 +338,10 @@ public class CoordinatorApp {
 		}while(choice != 5);
 	}
 	
+	/**
+	 * This method will contain different request functions for the coordinator.
+	 * @param coordinator this is the supervisor object that that is entered into the system after the user log in.
+	 */
 	private static void coordinatorRequestDisplay(Supervisor coordinator) {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
@@ -379,6 +410,10 @@ public class CoordinatorApp {
 		}while(bool);
 	}
 	
+	/**
+	 * This method will print the request menu for the coordinator
+	 * @param coordinator this is the supervisor object that that is entered into the system after the user log in.
+	 */
 	private static void requestDisplay(Supervisor coordinator) {
 		if(coordinator.pendingRequest()) {
 			System.out.println("========================================");

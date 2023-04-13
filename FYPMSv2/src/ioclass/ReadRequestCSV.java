@@ -13,9 +13,23 @@ import models.RegisterFYPRequest;
 import models.Request;
 import models.TransferStudentRequest;
 
+/**
+ * This class reads from the data file and using the information in the data file make a list of request object
+ * @author Dennis Chen
+ * @version 1.0
+ *
+ */
 public class ReadRequestCSV {
+	/**
+	 * This stores the filePath to get to the request csv file
+	 */
 	private static String filePath = System.getProperty("user.dir") + "\\CSVFiles\\request.csv";
 	
+	/**
+	 * This method reads from the csv file and it will make a request object based on the information stored in 
+	 * each row of the csv file. Each of this request object is appended into a list to make a list of requests.
+	 * @return the list of requests that is made from the information in the csv file
+	 */
 	public static List<Request> readCSV() {
 		BufferedReader reader = null;
 		
