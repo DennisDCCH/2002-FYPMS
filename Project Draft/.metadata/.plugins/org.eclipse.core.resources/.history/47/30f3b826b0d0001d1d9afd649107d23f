@@ -1,7 +1,0 @@
-package Program.Control;
-
-public interface SupervisorAppInterface {
-	
-	public void menu();
-
-}

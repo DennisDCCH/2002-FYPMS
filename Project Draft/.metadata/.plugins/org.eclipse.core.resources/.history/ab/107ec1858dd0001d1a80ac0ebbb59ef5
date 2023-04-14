@@ -1,5 +1,0 @@
-package Program;
-
-public abstract class Student extends User {
-
-}
