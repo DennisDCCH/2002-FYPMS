@@ -49,5 +49,5 @@ Enter your choice:
 `Press "2" then <ENTER>`
 
 ### UML and Reflections
-- [UML](https://github.com/DennisDCCH/2002-FYPMS/blob/main/FYPMS%20UML%20Diagram.vpp)
-- [Reflections]()
+- [UML](https://github.com/DennisDCCH/2002-FYPMS/blob/main/FYPMS%20UML%20Diagram.vpp) (Download from here)
+- [Reflections]() (View / Download from here)
