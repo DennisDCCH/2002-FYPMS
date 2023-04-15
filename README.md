@@ -50,4 +50,4 @@ Enter your choice:
 
 ### UML and Reflections
 - [UML](https://github.com/DennisDCCH/2002-FYPMS/blob/main/FYPMS%20UML%20Diagram.vpp) (Download from here)
-- [Reflections]() (View / Download from here)
+- [Reflections](https://github.com/DennisDCCH/2002-FYPMS-GRP3-Z51/blob/main/FYPMS%20Report.docx) (View / Download from here)
